@@ -1,0 +1,11 @@
+.primary {
+    -fx-padding: 10 20;
+    -fx-background-color: #23339a;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+    -fx-border-radius: 2px;
+}
+
+.primary:hover {
+    -fx-background-color: #2a3dbf;
+}
