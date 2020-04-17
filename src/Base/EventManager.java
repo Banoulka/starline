@@ -11,9 +11,8 @@ public class EventManager {
     }
 
     public static void setupClickable(IClickable clickable) {
-        setupHover(clickable);
-        clickable.getNode().setOnMousePressed(mouseEvent -> {
-            if (clickable.getNode().isHover()) clickable.doClick();
+        clickable.getNode().setOnMouseReleased(mouseEvent -> {
+            if (clickable.getNode().isHover()) clickable.doClick(mouseEvent);
         });
     }
 }

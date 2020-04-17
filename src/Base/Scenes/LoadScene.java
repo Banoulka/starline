@@ -9,12 +9,11 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
 public class LoadScene extends ExtendableScene {
-    public LoadScene(Pane parent) {
-        super(parent);
+    public LoadScene() {
+        super(new BorderPane());
 
         // Loading label
         Label loadingLabel = new Label();

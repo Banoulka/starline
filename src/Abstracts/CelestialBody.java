@@ -38,12 +38,12 @@ public abstract class CelestialBody extends GameObject implements IClickable {
     }
 
     @Override
-    public void doClick() {
-        System.out.println(getClass().getName() + " clicked!!!");
+    public Node getNode() {
+        return this.getImg();
     }
 
     @Override
-    public Node getNode() {
-        return this.getImg();
+    public void doClick(MouseEvent mouseEvent) {
+        System.out.println("Clicked: " + name);
     }
 }

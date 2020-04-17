@@ -1,4 +1,4 @@
 package Base.Interfaces.Actions;
 
-public interface IDraggable {
+public interface IPannable {
 }

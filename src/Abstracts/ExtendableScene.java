@@ -6,10 +6,15 @@ import javafx.scene.layout.Pane;
 
 public abstract class ExtendableScene extends Scene {
 
-    public ExtendableScene(Pane parent) {
+    protected Pane parent;
+
+    protected ExtendableScene(Pane parent) {
         // Base details for every scene including the root styles
         // the size of the window etc.
-        super(parent, Config.WINDOW_WIDTH, Config.WINDOW_HEIGHT);
+        super(parent , Config.WINDOW_WIDTH, Config.WINDOW_HEIGHT);
+
+        // Assign Local Variable
+        this.parent = parent;
 
         // Add all the style sheets etc.
         this.getStylesheets().add("Styles/root-styles.css");

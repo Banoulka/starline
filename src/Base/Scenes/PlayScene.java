@@ -4,18 +4,15 @@ import Abstracts.ExtendableScene;
 import Base.Interfaces.IRunAfter;
 import MVCs.PlayScene.C_PlayScene;
 import MVCs.PlayerData.C_PlayerData;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.BorderPane;
 
 public class PlayScene extends ExtendableScene implements IRunAfter {
 
     private C_PlayerData playerData;
     private C_PlayScene playScene;
 
-    private Pane parent;
-
-    public PlayScene(Pane parent) {
-        super(parent);
-        this.parent = parent;
+    public PlayScene() {
+        super(new BorderPane());
 
         // TODO: Create the sidebar
 

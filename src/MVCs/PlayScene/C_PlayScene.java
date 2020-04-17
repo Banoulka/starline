@@ -3,8 +3,9 @@ package MVCs.PlayScene;
 import Abstracts.Controller;
 import Abstracts.GameObject;
 import Base.Coord;
+import Base.EventManager;
 import Base.Interfaces.Actions.IClickable;
-import Base.Interfaces.Actions.IDraggable;
+import Base.Interfaces.Actions.IPannable;
 import Base.Interfaces.Actions.IHoverable;
 import Base.Interfaces.IRunAfter;
 import Base.Scenes.PlayScene;
@@ -87,10 +88,11 @@ public class C_PlayScene extends Controller implements IRunAfter {
 
 
             if (gameObject instanceof IClickable) {
-                ((IClickable) gameObject).getNode().setOnMousePressed(((IClickable) gameObject)::doClick);
-            } else if (gameObject instanceof IHoverable) {
-                ((IHoverable) gameObject).getNode().setOnMouseEntered(((IHoverable) gameObject)::onHover);
-                ((IHoverable) gameObject).getNode().setOnMouseExited(((IHoverable) gameObject)::onExit);
+                EventManager.setupClickable((IClickable) gameObject);
+            }
+
+            if (gameObject instanceof IHoverable) {
+                EventManager.setupHover((IHoverable) gameObject);
             }
         }
     }
@@ -100,7 +102,7 @@ public class C_PlayScene extends Controller implements IRunAfter {
         model.startingHeight = view.getGameObjectLayerDraggable().getPrefHeight() / 2;
 
         for (GameObject gameObject : model.getGameObjects()) {
-            if (gameObject instanceof IDraggable)
+            if (gameObject instanceof IPannable)
                 view.getGameObjectLayerDraggable().getChildren().add(gameObject);
             else
                 view.getGameObjectLayerStatic().getChildren().add(gameObject);

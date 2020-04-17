@@ -2,11 +2,11 @@ package Base.Planets;
 
 import Abstracts.CelestialBody;
 import Base.Coord;
-import Base.Interfaces.Actions.IDraggable;
+import Base.Interfaces.Actions.IPannable;
 
 import java.util.ArrayList;
 
-public class Planet extends CelestialBody implements IDraggable {
+public class Planet extends CelestialBody implements IPannable {
 
     private ArrayList<Moon> moons;
 
