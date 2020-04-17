@@ -1,5 +1,6 @@
 package MVCs.PlayScene;
 
+import Abstracts.CelestialBody;
 import Abstracts.GameObject;
 import Abstracts.View;
 import Base.Config;
@@ -7,6 +8,7 @@ import Base.StarFactory;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
@@ -26,9 +28,13 @@ public class V_PlayScene extends View {
     // Model
     private M_PlayScene model;
 
+    // Current tooltip
+    private Pane tooltip;
+
     public V_PlayScene(Pane root, M_PlayScene model) {
         super(root);
         this.model = model;
+        tooltip = null;
 
         // New background image
         Image image = new Image("/Resources/BACKGROUND_NO_STAR.png", 1920, 1080, false, true);
@@ -114,6 +120,25 @@ public class V_PlayScene extends View {
 
         pane.getChildren().add(canvasLayer);
         canvasLayer.toBack();
+    }
+
+    public void showTooltip(CelestialBody body, MouseEvent mouseEvent) {
+        hideTooltip();
+        tooltip = new Pane();
+        tooltip.setStyle("-fx-background-color: red");
+        tooltip.setPrefSize(90, 90);
+
+        tooltip.setTranslateX(body.getLayoutX() + mouseEvent.getX() + 10.0);
+        tooltip.setTranslateY(body.getLayoutY() + mouseEvent.getY() + 10.0);
+
+        gameObjectLayerDraggable.getChildren().add(tooltip);
+
+        System.out.println("Showing tooltip for " + body.getName());
+    }
+
+    public void hideTooltip() {
+        System.out.println("Hiding tooltip....");
+        gameObjectLayerDraggable.getChildren().remove(tooltip);
     }
 
     public Pane getPane() {

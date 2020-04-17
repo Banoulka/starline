@@ -11,8 +11,10 @@ public class EventManager {
     }
 
     public static void setupClickable(IClickable clickable) {
-        clickable.getNode().setOnMouseReleased(mouseEvent -> {
-            if (clickable.getNode().isHover()) clickable.doClick(mouseEvent);
+        clickable.getNode().setOnMousePressed(mouseEvent -> {
+            if (clickable.getNode().isHover() &&
+                            mouseEvent.isPrimaryButtonDown())
+                clickable.doClick(mouseEvent);
         });
     }
 }

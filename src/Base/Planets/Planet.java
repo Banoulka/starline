@@ -3,10 +3,13 @@ package Base.Planets;
 import Abstracts.CelestialBody;
 import Base.Coord;
 import Base.Interfaces.Actions.IPannable;
+import Base.Interfaces.Actions.IVisitable;
+import javafx.scene.Node;
 
 import java.util.ArrayList;
 
-public class Planet extends CelestialBody implements IPannable {
+public class Planet extends CelestialBody
+        implements IPannable, IVisitable {
 
     private ArrayList<Moon> moons;
 

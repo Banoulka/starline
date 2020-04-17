@@ -24,3 +24,4 @@ public abstract class ExtendableScene extends Scene {
         System.out.println(this.getClass() + " :: Loading...");
     }
 }
+

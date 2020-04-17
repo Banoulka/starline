@@ -9,7 +9,7 @@ import javafx.scene.layout.BorderPane;
 public class PlayScene extends ExtendableScene implements IRunAfter {
 
     private C_PlayerData playerData;
-    private C_PlayScene playScene;
+    private static C_PlayScene playScene;
 
     public PlayScene() {
         super(new BorderPane());

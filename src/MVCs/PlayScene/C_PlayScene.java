@@ -1,16 +1,19 @@
 package MVCs.PlayScene;
 
+import Abstracts.CelestialBody;
 import Abstracts.Controller;
 import Abstracts.GameObject;
 import Base.Coord;
 import Base.EventManager;
-import Base.Interfaces.Actions.IClickable;
-import Base.Interfaces.Actions.IPannable;
-import Base.Interfaces.Actions.IHoverable;
+import Base.Interfaces.Actions.*;
 import Base.Interfaces.IRunAfter;
+import Base.SceneManager;
 import Base.Scenes.PlayScene;
+import Base.Scenes.VisitScene;
 import javafx.scene.Cursor;
 import javafx.scene.layout.Pane;
+
+import java.util.List;
 
 public class C_PlayScene extends Controller implements IRunAfter {
 
@@ -47,6 +50,8 @@ public class C_PlayScene extends Controller implements IRunAfter {
 
             // Change the cursor to the hand
             layerDraggable.setCursor(Cursor.CLOSED_HAND);
+
+            view.hideTooltip();
         });
 
         layerDraggable.setOnMouseDragged(mouseEvent -> {
@@ -76,25 +81,28 @@ public class C_PlayScene extends Controller implements IRunAfter {
         });
 
         // Reset cursor on released
-        layerDraggable.setOnMouseReleased(mouseEvent -> layerDraggable.setCursor(Cursor.DEFAULT));
+        layerDraggable.setOnMouseReleased(mouseEvent -> {
+            layerDraggable.setCursor(Cursor.DEFAULT);
+        });
     }
 
     private void setupEvents() {
         // Setup the canvas drag
         setupDraggable();
 
-        // TODO: fix
-        for (GameObject gameObject : model.getGameObjects()) {
+        model.gameObjectsByActionType(IHoverable.class).forEach(EventManager::setupHover);
+        model.gameObjectsByActionType(IClickable.class).forEach(EventManager::setupClickable);
 
+        // Add tooltips to tooltipthings
+        List<CelestialBody> bodies =  model.getObjectTypeByAction(ITooltip.class, CelestialBody.class);
 
-            if (gameObject instanceof IClickable) {
-                EventManager.setupClickable((IClickable) gameObject);
-            }
+        bodies.forEach(celestialBody -> {
 
-            if (gameObject instanceof IHoverable) {
-                EventManager.setupHover((IHoverable) gameObject);
-            }
-        }
+            celestialBody.getNode().setOnMouseReleased(mouseEvent -> {
+                // show tooltip or something
+                view.showTooltip(celestialBody, mouseEvent);
+            });
+        });
     }
 
     private void setupObjects() {
@@ -107,6 +115,10 @@ public class C_PlayScene extends Controller implements IRunAfter {
             else
                 view.getGameObjectLayerStatic().getChildren().add(gameObject);
         }
+    }
+
+    public void visit(CelestialBody celestialBody) {
+        SceneManager.setCurrScene(new VisitScene(celestialBody));
     }
 
     @Override

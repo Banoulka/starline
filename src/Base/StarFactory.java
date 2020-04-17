@@ -106,8 +106,6 @@ class StarTwo extends Star {
 
 abstract class Star {
 
-    private Random r = Utils.random;
-
     private ImageView currImage;
     private double size;
 
@@ -116,6 +114,7 @@ abstract class Star {
 
         // Initial Random Values
         // Get a random size and opacity for the star
+        Random r = Utils.random;
         this.size = r.nextInt(startSizeMax) + 1;
         double opacity = r.nextDouble() * intensityWeight;
 

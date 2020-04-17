@@ -44,6 +44,18 @@ public abstract class CelestialBody extends GameObject implements IClickable {
 
     @Override
     public void doClick(MouseEvent mouseEvent) {
-        System.out.println("Clicked: " + name);
+        System.out.println("Clicked this yo");
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getGravityPull() {
+        return gravityPull;
+    }
+
+    public boolean isHasAtmosphere() {
+        return hasAtmosphere;
     }
 }
