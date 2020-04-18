@@ -12,7 +12,10 @@ import javafx.scene.layout.HBox;
 import javafx.util.Duration;
 
 public class LoadScene extends ExtendableScene {
-    public LoadScene() {
+
+    private static LoadScene instance = new LoadScene();
+
+    private LoadScene() {
         super(new BorderPane());
 
         // Loading label
@@ -45,5 +48,9 @@ public class LoadScene extends ExtendableScene {
         hBox.setAlignment(Pos.CENTER);
 
         ((BorderPane) parent).setCenter(hBox);
+    }
+
+    public static LoadScene get() {
+        return instance;
     }
 }

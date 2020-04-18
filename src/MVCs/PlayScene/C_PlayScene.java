@@ -5,11 +5,15 @@ import Abstracts.Controller;
 import Abstracts.GameObject;
 import Base.Coord;
 import Base.EventManager;
-import Base.Interfaces.Actions.*;
+import Base.Interfaces.Actions.IClickable;
+import Base.Interfaces.Actions.IHoverable;
+import Base.Interfaces.Actions.IPannable;
+import Base.Interfaces.Actions.ITooltip;
 import Base.Interfaces.IRunAfter;
 import Base.SceneManager;
-import Base.Scenes.PlayScene;
 import Base.Scenes.VisitScene;
+import MVCs.PlayerData.M_PlayerData;
+import MVCs.VisitScene.C_VisitScene;
 import javafx.scene.Cursor;
 import javafx.scene.layout.Pane;
 
@@ -20,14 +24,11 @@ public class C_PlayScene extends Controller implements IRunAfter {
     protected M_PlayScene model;
     protected V_PlayScene view;
 
-    protected PlayScene scene;
-
-    public C_PlayScene(Pane root, PlayScene parentScene) {
-        scene = parentScene;
+    public C_PlayScene(Pane root) {
 
         // Base constructor for player data sending a playerData model and view
         model = new M_PlayScene();
-        view = new V_PlayScene(root, model);
+        view = new V_PlayScene(root, model, this);
     }
 
     private void setupDraggable() {
@@ -115,10 +116,14 @@ public class C_PlayScene extends Controller implements IRunAfter {
             else
                 view.getGameObjectLayerStatic().getChildren().add(gameObject);
         }
+
+        M_PlayerData.getInstance().addPlanet(model.findBody("Earth"));
+        System.out.println(M_PlayerData.getInstance().getKnownBodies());
     }
 
     public void visit(CelestialBody celestialBody) {
-        SceneManager.setCurrScene(new VisitScene(celestialBody));
+        C_VisitScene.setVisiting(celestialBody);
+        SceneManager.setCurrScene(VisitScene.get());
     }
 
     @Override

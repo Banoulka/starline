@@ -104,6 +104,15 @@ public class M_PlayScene extends Model {
         ));
     }
 
+    public CelestialBody findBody(String name) {
+        List<CelestialBody> bodies = getBodies();
+
+        return (CelestialBody) bodies.stream()
+                .filter(body -> body.getName().equals(name))
+                .map(CelestialBody.class::cast)
+                .toArray()[0];
+    }
+
     public List<GameObject> getGameObjects() {
         if (gameObjects.isEmpty()) {
             addObjects();

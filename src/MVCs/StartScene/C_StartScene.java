@@ -47,7 +47,7 @@ public class C_StartScene extends Controller {
             M_PlayerData.getInstance().setPlayerName(view.getNameInput().getText());
 
             // Switch the scene to the play scene
-            SceneManager.setCurrScene(new PlayScene());
+            SceneManager.setCurrScene(PlayScene.get());
         }
 
     }

@@ -4,9 +4,15 @@ import Abstracts.CelestialBody;
 import Abstracts.GameObject;
 import Abstracts.View;
 import Base.Config;
+import Base.Interfaces.Actions.IVisitable;
 import Base.StarFactory;
+import MVCs.PlayerData.M_PlayerData;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
@@ -28,13 +34,17 @@ public class V_PlayScene extends View {
     // Model
     private M_PlayScene model;
 
+    // Controller
+    private C_PlayScene controller;
+
     // Current tooltip
     private Pane tooltip;
 
-    public V_PlayScene(Pane root, M_PlayScene model) {
+    public V_PlayScene(Pane root, M_PlayScene model, C_PlayScene controller) {
         super(root);
         this.model = model;
         tooltip = null;
+        this.controller = controller;
 
         // New background image
         Image image = new Image("/Resources/BACKGROUND_NO_STAR.png", 1920, 1080, false, true);
@@ -125,19 +135,42 @@ public class V_PlayScene extends View {
     public void showTooltip(CelestialBody body, MouseEvent mouseEvent) {
         hideTooltip();
         tooltip = new Pane();
-        tooltip.setStyle("-fx-background-color: red");
-        tooltip.setPrefSize(90, 90);
-
+        tooltip.setStyle("-fx-background-color: rgba(45,46,48,0.98)");
         tooltip.setTranslateX(body.getLayoutX() + mouseEvent.getX() + 10.0);
         tooltip.setTranslateY(body.getLayoutY() + mouseEvent.getY() + 10.0);
 
-        gameObjectLayerDraggable.getChildren().add(tooltip);
+        boolean isKnown = M_PlayerData.getInstance().isKnown(body);
+        String title = isKnown ? body.getName() : "Unknown Body";
 
-        System.out.println("Showing tooltip for " + body.getName());
+        Label label = new Label();
+        label.setText(title);
+        label.setStyle("-fx-text-fill: white");
+
+        VBox vBox = new VBox();
+        vBox.setAlignment(Pos.TOP_CENTER);
+        vBox.setPadding(new Insets(10, 15, 10, 15));
+        vBox.getChildren().add(label);
+
+        if (isKnown) {
+            Button actionButton = new Button();
+            actionButton.setText("View");
+            vBox.getChildren().add(actionButton);
+        }
+
+
+        if (body instanceof IVisitable) {
+            Button visitButton = new Button();
+            visitButton.setText("Visit");
+            vBox.getChildren().add(visitButton);
+            visitButton.setOnMouseReleased(mouseEvent1 -> controller.visit(body));
+        }
+
+        tooltip.getChildren().add(vBox);
+
+        gameObjectLayerDraggable.getChildren().add(tooltip);
     }
 
     public void hideTooltip() {
-        System.out.println("Hiding tooltip....");
         gameObjectLayerDraggable.getChildren().remove(tooltip);
     }
 

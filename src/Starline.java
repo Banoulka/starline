@@ -22,6 +22,6 @@ public class Starline extends Application {
         // Controllers handle the view / model situation
 
         // Hierarchy = SceneManager > Scenes > Controller(s) > View(s) / Model(s)
-        SceneManager.setCurrScene(new PlayScene());
+        SceneManager.setCurrScene(PlayScene.get());
     }
 }

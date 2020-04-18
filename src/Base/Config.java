@@ -6,7 +6,7 @@ public class Config {
     public static final int WINDOW_HEIGHT = 1080;
     public static final int WINDOW_WIDTH = 1920;
 
-    public static final boolean DEBUG = true;
+    public static final boolean DEBUG = false;
 
     public static final boolean IS_RESIZABLE = false;
 

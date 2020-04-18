@@ -17,7 +17,7 @@ public class SceneManager {
     public static void setCurrScene(ExtendableScene scene){
 
         // Set the loading screen first in between scenes
-        loadScene(new LoadScene());
+        loadScene(LoadScene.get());
 
         // Show the loading screen first and then start loading the other scenes
         // once loaded the scene will change again into the requested scene
@@ -25,6 +25,7 @@ public class SceneManager {
     }
 
     private static void loadScene(ExtendableScene scene) {
+        stage.setScene(null);
         // Stage the scene and show it
         stage.setScene(scene);
         stage.setResizable(Config.IS_RESIZABLE);

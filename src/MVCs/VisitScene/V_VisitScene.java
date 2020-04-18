@@ -1,7 +1,6 @@
 package MVCs.VisitScene;
 
 import Abstracts.View;
-import MVCs.PlayScene.M_PlayScene;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -14,10 +13,11 @@ public class V_VisitScene extends View {
 
     private Label title;
     private Button backButton;
-    private M_PlayScene model;
+    private M_VisitScene model;
 
     public V_VisitScene(Pane root, M_VisitScene model) {
         super(root);
+        this.model = model;
 
         title = new Label("Visiting... " + model.getCurrentlyVisiting().getName());
         title.getStyleClass().add("title");
