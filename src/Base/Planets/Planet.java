@@ -19,6 +19,10 @@ public class Planet extends CelestialBody
         this.moons = new ArrayList<Moon>();
     }
 
+    public Planet() {
+        this.moons = new ArrayList<>();
+    }
+
     public void addMoon(Moon moon) {
         moons.add(moon);
     }
@@ -26,4 +30,6 @@ public class Planet extends CelestialBody
     public ArrayList<Moon> getMoons() {
         return moons;
     }
+
+
 }

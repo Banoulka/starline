@@ -13,7 +13,6 @@ import Base.Interfaces.IRunAfter;
 import Base.SceneManager;
 import Base.Scenes.VisitScene;
 import MVCs.PlayerData.M_PlayerData;
-import MVCs.VisitScene.C_VisitScene;
 import javafx.scene.Cursor;
 import javafx.scene.layout.Pane;
 
@@ -41,7 +40,7 @@ public class C_PlayScene extends Controller implements IRunAfter {
         // Get the pane
         final Pane pane = view.getPane();
 
-        // Calculate the bound width of X
+        // Calculate the bound goWidth of X
         final double boundWidth = view.getPane().getWidth() - view.getGameObjectLayerDraggable().getPrefWidth();
 
         layerDraggable.setOnMousePressed(mouseEvent -> {
@@ -118,12 +117,11 @@ public class C_PlayScene extends Controller implements IRunAfter {
         }
 
         M_PlayerData.getInstance().addPlanet(model.findBody("Earth"));
-        System.out.println(M_PlayerData.getInstance().getKnownBodies());
+        M_PlayerData.getInstance().addPlanet(model.findBody("Sun"));
     }
 
     public void visit(CelestialBody celestialBody) {
-        C_VisitScene.setVisiting(celestialBody);
-        SceneManager.setCurrScene(VisitScene.get());
+        SceneManager.setCurrScene(new VisitScene(celestialBody));
     }
 
     @Override

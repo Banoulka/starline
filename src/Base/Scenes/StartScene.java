@@ -1,18 +1,17 @@
 package Base.Scenes;
 
-import Abstracts.ExtendableScene;
 import MVCs.StartScene.C_StartScene;
 import javafx.scene.layout.BorderPane;
 
-public class StartScene extends ExtendableScene {
+public class StartScene extends BorderPane {
 
     private static StartScene instance = new StartScene();
 
     private StartScene() {
-        super(new BorderPane());
+        super();
 
         // Create the new controller for the page.
-        C_StartScene startScene = new C_StartScene(parent);
+        C_StartScene startScene = new C_StartScene(this);
     }
 
     public static StartScene get() {

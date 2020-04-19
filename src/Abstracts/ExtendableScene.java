@@ -2,19 +2,14 @@ package Abstracts;
 
 import Base.Config;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.BorderPane;
 
-public abstract class ExtendableScene extends Scene {
+public class ExtendableScene extends Scene {
 
-    protected Pane parent;
-
-    protected ExtendableScene(Pane parent) {
+    public ExtendableScene() {
         // Base details for every scene including the root styles
         // the size of the window etc.
-        super(parent , Config.WINDOW_WIDTH, Config.WINDOW_HEIGHT);
-
-        // Assign Local Variable
-        this.parent = parent;
+        super(new BorderPane(), Config.WINDOW_WIDTH, Config.WINDOW_HEIGHT);
 
         // Add all the style sheets etc.
         this.getStylesheets().add("Styles/root-styles.css");

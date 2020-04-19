@@ -13,9 +13,7 @@ public class C_VisitScene extends Controller implements IRunAfter {
     protected V_VisitScene view;
     protected M_VisitScene model;
 
-    protected static CelestialBody visiting;
-
-    public C_VisitScene(Pane root) {
+    public C_VisitScene(Pane root, CelestialBody visiting) {
 
         model = new M_VisitScene(visiting);
         view = new V_VisitScene(root, model);
@@ -23,13 +21,10 @@ public class C_VisitScene extends Controller implements IRunAfter {
         view.getBackButton().setOnMouseReleased(mouseEvent -> goBackToPlay(visiting));
     }
 
-    public static void setVisiting(CelestialBody visiting) {
-        C_VisitScene.visiting = visiting;
-    }
 
     public void goBackToPlay(CelestialBody celestialBody) {
         M_PlayerData.getInstance().addPlanet(celestialBody);
-        SceneManager.setCurrScene(PlayScene.get(true));
+        SceneManager.setCurrScene(new PlayScene());
     }
 
     @Override

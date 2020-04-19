@@ -5,18 +5,20 @@ import javafx.animation.ParallelTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
+import javafx.geometry.BoundingBox;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.util.Duration;
 
-public class LoadScene extends ExtendableScene {
+public class LoadScene extends BorderPane {
 
     private static LoadScene instance = new LoadScene();
 
     private LoadScene() {
-        super(new BorderPane());
+        super();
 
         // Loading label
         Label loadingLabel = new Label();
@@ -47,7 +49,7 @@ public class LoadScene extends ExtendableScene {
         hBox.getChildren().add(loadingLabel);
         hBox.setAlignment(Pos.CENTER);
 
-        ((BorderPane) parent).setCenter(hBox);
+        this.setCenter(hBox);
     }
 
     public static LoadScene get() {

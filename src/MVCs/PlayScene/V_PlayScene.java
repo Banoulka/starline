@@ -3,6 +3,7 @@ package MVCs.PlayScene;
 import Abstracts.CelestialBody;
 import Abstracts.GameObject;
 import Abstracts.View;
+import Base.CanvasLayer;
 import Base.Config;
 import Base.Interfaces.Actions.IVisitable;
 import Base.StarFactory;
@@ -21,12 +22,10 @@ import javafx.scene.paint.Color;
 public class V_PlayScene extends View {
 
     private Pane pane;
-    private Pane starPane;
 
     // GameObject Pane
     private Pane gameObjectLayerDraggable;
     private Pane gameObjectLayerStatic;
-    private Pane canvasLayer;
 
     // Star background
     private StarFactory starFactory;
@@ -40,10 +39,13 @@ public class V_PlayScene extends View {
     // Current tooltip
     private Pane tooltip;
 
+    // Canvas layer
+    private CanvasLayer canvasLayer;
+
     public V_PlayScene(Pane root, M_PlayScene model, C_PlayScene controller) {
         super(root);
         this.model = model;
-        tooltip = null;
+        this.tooltip = null;
         this.controller = controller;
 
         // New background image
@@ -59,7 +61,7 @@ public class V_PlayScene extends View {
         Background bg = new Background(backgroundImage);
 
         // New pane for layout and size
-        pane = new Pane();
+        pane = new BorderPane();
         pane.setBackground(bg);
 
         ((BorderPane) root).setCenter(pane);
@@ -76,13 +78,14 @@ public class V_PlayScene extends View {
     public void runAfter() {
         setupStars();
         setupGameObjectLayer();
-        setupCanvas();
+//        setupCanvas();
     }
 
     public void translateDraggables(double x) {
         gameObjectLayerDraggable.setTranslateX(x);
         starFactory.setTranslateX(x);
-        canvasLayer.setTranslateX(x);
+//        canvasLayer.setTranslateX(x);
+        // Update planet positions and canvas layer
         updateView();
     }
 
@@ -111,24 +114,28 @@ public class V_PlayScene extends View {
 
     private void setupCanvas() {
 
-        // Setup canvas and graphics context
-        Canvas canvas = new Canvas(Config.PLAY_AREA_SIZE, pane.getHeight());
-        GraphicsContext gc = canvas.getGraphicsContext2D();
+        canvasLayer = CanvasLayer.getInstance();
 
-        // Set the graphics context layer up
-        GameObject.setGraphicsContext(gc);
+        if (canvasLayer == null) {
+            // Setup canvas and graphics context
+            Canvas canvas = new Canvas(5000, pane.getHeight());
+            GraphicsContext gc = canvas.getGraphicsContext2D();
 
-        // Debug stuff
-        // Debug graphic line in the center;
-        if (Config.DEBUG) {
-            gc.setStroke(Color.YELLOW);
-            gc.strokeLine(0, canvas.getHeight()/2, canvas.getWidth(), canvas.getHeight()/2);
+            // Set the graphics context layer up
+            GameObject.setGraphicsContext(gc);
+
+            // Debug stuff
+            // Debug graphic line in the center;
+            if (Config.DEBUG) {
+                gc.setStroke(Color.YELLOW);
+                gc.strokeLine(0, canvas.getHeight()/2, canvas.getWidth(), canvas.getHeight()/2);
+            }
+
+            canvasLayer = CanvasLayer.setCanvas(canvas);
         }
 
-        canvasLayer = new Pane();
-        canvasLayer.getChildren().add(canvas);
 
-        pane.getChildren().add(canvasLayer);
+        gameObjectLayerDraggable.getChildren().add(canvasLayer);
         canvasLayer.toBack();
     }
 
@@ -184,9 +191,5 @@ public class V_PlayScene extends View {
 
     public Pane getGameObjectLayerStatic() {
         return gameObjectLayerStatic;
-    }
-
-    public Pane getCanvasLayer() {
-        return canvasLayer;
     }
 }

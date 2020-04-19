@@ -3,6 +3,7 @@ package MVCs.PlayScene;
 import Abstracts.CelestialBody;
 import Abstracts.GameObject;
 import Abstracts.Model;
+import Base.Builders.PlanetBuilder;
 import Base.Coord;
 import Base.Interfaces.Actions.IEvent;
 import Base.Planets.Planet;
@@ -30,7 +31,8 @@ public class M_PlayScene extends Model {
 
     private void addPlanets(double startingHeight) {
 
-        //TODO: Make a builder
+        PlanetBuilder pb = new PlanetBuilder();
+
         gameObjects.add(new Star(
                 new Coord(-75, startingHeight),
                 "Sun",
@@ -39,69 +41,78 @@ public class M_PlayScene extends Model {
                 false
         ));
 
-        gameObjects.add(new Planet(
-                new Coord(1400, startingHeight),
-                "Mercury",
-                1,
-                1,
-                false
-        ));
+        Planet mercury = pb
+                .name("Mercury")
+                .hasAtmosphere(false)
+                .sizeSquare(1)
+                .gravityPull(1)
+                .position(new Coord(1400, startingHeight))
+                .build();
 
-        gameObjects.add(new Planet(
-                new Coord(1900, startingHeight),
-                "Venus",
-                1,
-                4,
-                false
-        ));
+        Planet venus = pb
+                .name("Venus")
+                .hasAtmosphere(false)
+                .sizeSquare(4)
+                .gravityPull(1)
+                .position(new Coord(1900, startingHeight))
+                .build();
 
-        gameObjects.add(new Planet(
-                new Coord(3000, startingHeight),
-                "Earth",
-                4,
-                5,
-                false
-        ));
+        Planet earth = pb
+                .name("Earth")
+                .hasAtmosphere(true)
+                .sizeSquare(5)
+                .gravityPull(4)
+                .position(new Coord(3000, startingHeight))
+                .build();
 
-        gameObjects.add(new Planet(
-                new Coord(4000, startingHeight),
-                "Mars",
-                4,
-                2,
-                false
-        ));
-//
-//        gameObjects.add(new Planet(
-//                new Coord(5200, startingHeight),
-//                "Jupiter",
-//                4,
-//                12,
-//                false
-//        ));
+        Planet mars = pb
+                .name("Mars")
+                .hasAtmosphere(true)
+                .sizeSquare(2)
+                .gravityPull(2)
+                .position(new Coord(4000, startingHeight))
+                .build();
 
-        gameObjects.add(new Planet(
-                new Coord(7700, startingHeight),
-                "Saturn",
-                4,
-                8.5,
-                false
-        ));
+        Planet jupiter = pb
+                .name("Jupiter")
+                .hasAtmosphere(false)
+                .gravityPull(4)
+                .sizeSquare(12)
+                .position(new Coord(5200, startingHeight))
+                .build();
 
-        gameObjects.add(new Planet(
-                new Coord(10000, startingHeight),
-                "Uranus",
-                4,
-                6,
-                false
-        ));
+        Planet saturn = pb
+                .name("Saturn")
+                .hasAtmosphere(false)
+                .gravityPull(4)
+                .sizeRect(12, 8.5)
+                .position(new Coord(7700, startingHeight))
+                .build();
 
-        gameObjects.add(new Planet(
-                new Coord(13500, startingHeight),
-                "Neptune",
-                4,
-                6,
-                false
-        ));
+        Planet uranus = pb
+                .name("Uranus")
+                .hasAtmosphere(false)
+                .gravityPull(4)
+                .sizeSquare(6)
+                .position(new Coord(10000, startingHeight))
+                .build();
+
+        Planet neptune = pb
+                .name("Neptune")
+                .hasAtmosphere(false)
+                .gravityPull(4)
+                .sizeSquare(6)
+                .position(new Coord(13500, startingHeight))
+                .build();
+
+        gameObjects.add(mercury);
+        gameObjects.add(venus);
+        gameObjects.add(earth);
+        gameObjects.add(mars);
+        gameObjects.add(jupiter);
+        gameObjects.add(saturn);
+        gameObjects.add(uranus);
+        gameObjects.add(neptune);
     }
 
     public CelestialBody findBody(String name) {

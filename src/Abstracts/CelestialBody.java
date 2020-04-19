@@ -10,9 +10,9 @@ import javafx.scene.input.MouseEvent;
 
 public abstract class CelestialBody extends GameObject implements IClickable {
 
-    protected final String name;
-    protected final double gravityPull;
-    protected final boolean hasAtmosphere;
+    protected String name;
+    protected double gravityPull;
+    protected boolean hasAtmosphere;
 
     public CelestialBody(Coord startingCords, String name, double gravityPull, double size, boolean hasAtmosphere) {
         super(startingCords, size, new ImageView("/Resources/" + name.toUpperCase() + ".png"));
@@ -20,6 +20,8 @@ public abstract class CelestialBody extends GameObject implements IClickable {
         this.gravityPull = gravityPull;
         this.hasAtmosphere = hasAtmosphere;
     }
+
+    public CelestialBody() {}
 
     @Override
     public void onHover(MouseEvent mouseEvent) {
@@ -57,5 +59,17 @@ public abstract class CelestialBody extends GameObject implements IClickable {
 
     public boolean isHasAtmosphere() {
         return hasAtmosphere;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setGravityPull(double gravityPull) {
+        this.gravityPull = gravityPull;
+    }
+
+    public void setHasAtmosphere(boolean hasAtmosphere) {
+        this.hasAtmosphere = hasAtmosphere;
     }
 }

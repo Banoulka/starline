@@ -23,7 +23,7 @@ public class StarFactory {
     private final static File[] starList = resourcesDir.listFiles(starFilter);
 
     // Array list of images to use as star sprites
-    private final ArrayList<ImageView> starSprites = new ArrayList<ImageView>();
+    private final static ArrayList<ImageView> starSprites = new ArrayList<ImageView>();
 
     private Random r = Utils.random;
 
@@ -40,20 +40,25 @@ public class StarFactory {
 
         stars = new ArrayList<Star>();
 
-        // If the star list is empty or the images not found then
-        // throw an error because something went wrong :(
-        if (starList != null && resourcesDir.isDirectory()) {
-            for (final File currFile : starList) {
+        if (starSprites.isEmpty()) {
 
-                // Get the new image as a javafx image from the URI
-                ImageView img = new ImageView(currFile.toURI().toString());
-                System.out.println("StarFactory Star Found :: " + currFile.getName());
+            // If the star list is empty or the images not found then
+            // throw an error because something went wrong :(
+            if (starList != null && resourcesDir.isDirectory()) {
+                for (final File currFile : starList) {
 
-                // Add the image to the star list array
-                starSprites.add(img);
-            }
-        } else System.err.println("StarFactory :: No star images found");
+                    // Get the new image as a javafx image from the URI
+                    ImageView img = new ImageView(currFile.toURI().toString());
+                    System.out.println("StarFactory Star Found :: " + currFile.getName());
 
+                    // Add the image to the star list array
+                    starSprites.add(img);
+                }
+            } else System.err.println("StarFactory :: No star images found");
+
+        } else {
+            System.out.println("StarFactory :: Sprites already loaded");
+        }
     }
 
     public void setTranslateX(double x) {

@@ -12,20 +12,22 @@ public abstract class GameObject extends Region {
 
     private ImageView img;
     protected Coord position;
-    protected double size;
+    protected double goHeight;
+    protected double goWidth;
 
     protected static GraphicsContext gc;
 
-    protected final BoundingBox boundingBox;
+    protected BoundingBox boundingBox;
 
     public GameObject(Coord startingCords, double size, ImageView img) {
-        this.size = size * Config.SCALE_MODIFIER;
+        this.goWidth = size * Config.SCALE_MODIFIER;
+        this.goHeight = this.goWidth;
 
         // Calculate the new coords based on size
-        this.position = new Coord(startingCords.x, startingCords.y - (this.size / 2));
+        this.position = new Coord(startingCords.x, startingCords.y - (this.goWidth / 2));
 
         // Draw the bounding box
-        this.boundingBox = new BoundingBox(position.x, position.y, this.size, this.size);
+        this.boundingBox = new BoundingBox(position.x, position.y, this.goWidth, this.goHeight);
 
         if (img != null) {
             this.img = img;
@@ -37,22 +39,23 @@ public abstract class GameObject extends Region {
         this.update();
     }
 
+    public GameObject(){}
+
     public void update() {
         this.setLayoutX(position.x);
         this.setLayoutY(position.y);
-        this.setPrefSize(size, size);
+        this.setPrefSize(goWidth, goHeight);
 
         if (img != null) {
-            img.setFitHeight(size);
-            img.setFitWidth(size);
+            img.setFitHeight(goHeight);
+            img.setFitWidth(goWidth);
         }
 
-
-        if (Config.DEBUG) {
+        if (Config.DEBUG && gc != null) {
             gc.setStroke(Color.RED);
 
             // Draw bounding box over the boundaries
-            gc.strokeRect(position.x, position.y, size, size);
+            gc.strokeRect(position.x, position.y, goWidth, goHeight);
 
             // Draw circle in posX and posY of the game object
             gc.setFill(Color.BLUE);
@@ -65,7 +68,7 @@ public abstract class GameObject extends Region {
     }
 
     public Coord getCenter() {
-        return new Coord(position.x + (size / 2), position.y + (size / 2));
+        return new Coord(position.x + (goWidth / 2), position.y + (goHeight / 2));
     }
 
     public static void setGraphicsContext(GraphicsContext gc) {
@@ -78,5 +81,30 @@ public abstract class GameObject extends Region {
 
     public ImageView getImg() {
         return img;
+    }
+
+    public void setImg(String imageName) {
+        this.img = new ImageView("/Resources/" + imageName.toUpperCase() + ".png");
+        this.img.setFitWidth(goWidth);
+        this.img.setFitHeight(goHeight);
+        this.getChildren().add(this.img);
+    }
+
+    public void setPosition(Coord position) {
+        this.position = new Coord(position.x, position.y - (this.goHeight / 2));
+        this.setLayoutX(this.position.x);
+        this.setLayoutY(this.position.y);
+    }
+
+    public void setGoHeight(double goHeight) {
+        this.goHeight = goHeight * Config.SCALE_MODIFIER;
+    }
+
+    public void setGoWidth(double goWidth) {
+        this.goWidth = goWidth * Config.SCALE_MODIFIER;
+    }
+
+    public void buildBoundingBox() {
+        this.boundingBox = new BoundingBox(position.x, position.y, this.goWidth, this.goHeight);
     }
 }
