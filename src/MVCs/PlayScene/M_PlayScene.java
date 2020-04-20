@@ -3,9 +3,12 @@ package MVCs.PlayScene;
 import Abstracts.CelestialBody;
 import Abstracts.GameObject;
 import Abstracts.Model;
+import Base.Builders.MoonBuilder;
 import Base.Builders.PlanetBuilder;
+import Base.Builders.StarBuilder;
 import Base.Coord;
 import Base.Interfaces.Actions.IEvent;
+import Base.Planets.Moon;
 import Base.Planets.Planet;
 import Base.Planets.Star;
 
@@ -30,16 +33,18 @@ public class M_PlayScene extends Model {
 
 
     private void addPlanets(double startingHeight) {
-
         PlanetBuilder pb = new PlanetBuilder();
+        StarBuilder sb = new StarBuilder();
+        MoonBuilder mb = new MoonBuilder();
 
-        gameObjects.add(new Star(
-                new Coord(-75, startingHeight),
-                "Sun",
-                2,
-                18,
-                false
-        ));
+        Star sun = sb
+                .name("The Sun")
+                .hasAtmosphere(false)
+                .sizeSquare(22)
+                .gravityPull(20)
+                .image("sun")
+                .position(new Coord(-450, startingHeight))
+                .build();
 
         Planet mercury = pb
                 .name("Mercury")
@@ -57,12 +62,21 @@ public class M_PlayScene extends Model {
                 .position(new Coord(1900, startingHeight))
                 .build();
 
+        Moon moon = mb
+                .name("The Moon")
+                .hasAtmosphere(false)
+                .sizeSquare(0.5)
+                .gravityPull(0.2)
+                .image("moon")
+                .build();
+
         Planet earth = pb
                 .name("Earth")
                 .hasAtmosphere(true)
                 .sizeSquare(5)
                 .gravityPull(4)
                 .position(new Coord(3000, startingHeight))
+                .addMoon(moon)
                 .build();
 
         Planet mars = pb
@@ -85,7 +99,7 @@ public class M_PlayScene extends Model {
                 .name("Saturn")
                 .hasAtmosphere(false)
                 .gravityPull(4)
-                .sizeRect(12, 8.5)
+                .sizeRect(11, 8.5)
                 .position(new Coord(7700, startingHeight))
                 .build();
 
@@ -105,6 +119,7 @@ public class M_PlayScene extends Model {
                 .position(new Coord(13500, startingHeight))
                 .build();
 
+        gameObjects.add(sun);
         gameObjects.add(mercury);
         gameObjects.add(venus);
         gameObjects.add(earth);
@@ -116,26 +131,28 @@ public class M_PlayScene extends Model {
     }
 
     public CelestialBody findBody(String name) {
-        List<CelestialBody> bodies = getBodies();
+        List<CelestialBody> bodies = gameObjectsByType(CelestialBody.class);
 
         return (CelestialBody) bodies.stream()
-                .filter(body -> body.getName().equals(name))
+                .filter(body -> body.getName().equalsIgnoreCase(name))
                 .map(CelestialBody.class::cast)
                 .toArray()[0];
     }
 
     public List<GameObject> getGameObjects() {
         if (gameObjects.isEmpty()) {
-            addObjects();
+            addPlanets(startingHeight);
+
+            // For each of the planets, check and add the moons
+            List<Planet> planets = gameObjectsByType(Planet.class);
+
+            for (Planet planet : planets) {
+                if (!planet.getMoons().isEmpty())
+                    // Add moons
+                    gameObjects.addAll(planet.getMoons());
+            }
         }
         return gameObjects;
-    }
-
-    public List<CelestialBody> getBodies() {
-        return gameObjects.stream()
-                .filter(CelestialBody.class::isInstance)
-                .map(CelestialBody.class::cast)
-                .collect(Collectors.toList());
     }
 
     public <T extends IEvent, J extends GameObject> List<J>
@@ -152,6 +169,13 @@ public class M_PlayScene extends Model {
         return gameObjects.stream()
                 .filter(action::isInstance)
                 .map(action::cast)
+                .collect(Collectors.toList());
+    }
+
+    public <T extends GameObject> List<T> gameObjectsByType(Class<T> type) {
+        return gameObjects.stream()
+                .filter(type::isInstance)
+                .map(type::cast)
                 .collect(Collectors.toList());
     }
 }

@@ -23,7 +23,7 @@ public class C_VisitScene extends Controller implements IRunAfter {
 
 
     public void goBackToPlay(CelestialBody celestialBody) {
-        M_PlayerData.getInstance().addPlanet(celestialBody);
+        M_PlayerData.getInstance().addKnownBody(celestialBody);
         SceneManager.setCurrScene(new PlayScene());
     }
 

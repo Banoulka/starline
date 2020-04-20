@@ -3,6 +3,7 @@ package MVCs.PlayScene;
 import Abstracts.CelestialBody;
 import Abstracts.Controller;
 import Abstracts.GameObject;
+import Base.Config;
 import Base.Coord;
 import Base.EventManager;
 import Base.Interfaces.Actions.IClickable;
@@ -10,9 +11,13 @@ import Base.Interfaces.Actions.IHoverable;
 import Base.Interfaces.Actions.IPannable;
 import Base.Interfaces.Actions.ITooltip;
 import Base.Interfaces.IRunAfter;
+import Base.Planets.Moon;
+import Base.Planets.Planet;
 import Base.SceneManager;
 import Base.Scenes.VisitScene;
 import MVCs.PlayerData.M_PlayerData;
+import javafx.animation.Animation;
+import javafx.animation.AnimationTimer;
 import javafx.scene.Cursor;
 import javafx.scene.layout.Pane;
 
@@ -22,6 +27,9 @@ public class C_PlayScene extends Controller implements IRunAfter {
 
     protected M_PlayScene model;
     protected V_PlayScene view;
+
+    // Local instance of playerdata
+    private M_PlayerData playerData = M_PlayerData.getInstance();
 
     public C_PlayScene(Pane root) {
 
@@ -97,7 +105,6 @@ public class C_PlayScene extends Controller implements IRunAfter {
         List<CelestialBody> bodies =  model.getObjectTypeByAction(ITooltip.class, CelestialBody.class);
 
         bodies.forEach(celestialBody -> {
-
             celestialBody.getNode().setOnMouseReleased(mouseEvent -> {
                 // show tooltip or something
                 view.showTooltip(celestialBody, mouseEvent);
@@ -114,14 +121,33 @@ public class C_PlayScene extends Controller implements IRunAfter {
                 view.getGameObjectLayerDraggable().getChildren().add(gameObject);
             else
                 view.getGameObjectLayerStatic().getChildren().add(gameObject);
+
+            gameObject.startAnimation();
         }
 
-        M_PlayerData.getInstance().addPlanet(model.findBody("Earth"));
-        M_PlayerData.getInstance().addPlanet(model.findBody("Sun"));
+        // Always start with the earth and sun known
+        CelestialBody earth = model.findBody("Earth");
+
+        // If the player is not currently on ANY planet... should only be on startup
+        // then add them to earth
+        playerData.setCurrPlanet(earth);
+
+        playerData.addKnownBody(earth);
+        playerData.addKnownBody(model.findBody("The Sun"));
+
     }
 
     public void visit(CelestialBody celestialBody) {
         SceneManager.setCurrScene(new VisitScene(celestialBody));
+    }
+
+    private void setupAnimationTimer() {
+        new AnimationTimer() {
+            @Override
+            public void handle(long l) {
+                view.updateView();
+            }
+        }.start();
     }
 
     @Override
@@ -132,6 +158,7 @@ public class C_PlayScene extends Controller implements IRunAfter {
         // Our run after
         setupObjects();
         setupEvents();
+        setupAnimationTimer();
     }
 
     @Override

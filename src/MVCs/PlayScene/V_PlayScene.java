@@ -3,7 +3,6 @@ package MVCs.PlayScene;
 import Abstracts.CelestialBody;
 import Abstracts.GameObject;
 import Abstracts.View;
-import Base.CanvasLayer;
 import Base.Config;
 import Base.Interfaces.Actions.IVisitable;
 import Base.StarFactory;
@@ -40,7 +39,7 @@ public class V_PlayScene extends View {
     private Pane tooltip;
 
     // Canvas layer
-    private CanvasLayer canvasLayer;
+    private Canvas canvasLayer;
 
     public V_PlayScene(Pane root, M_PlayScene model, C_PlayScene controller) {
         super(root);
@@ -49,7 +48,7 @@ public class V_PlayScene extends View {
         this.controller = controller;
 
         // New background image
-        Image image = new Image("/Resources/BACKGROUND_NO_STAR.png", 1920, 1080, false, true);
+        Image image = new Image("/Resources/Min/BACKGROUND_NO_STAR-min.png", 1920, 1080, false, true);
         BackgroundSize backgroundSize = new BackgroundSize(105, 105, true, true, true, true);
         BackgroundImage backgroundImage = new BackgroundImage(
                 image,
@@ -78,13 +77,13 @@ public class V_PlayScene extends View {
     public void runAfter() {
         setupStars();
         setupGameObjectLayer();
-//        setupCanvas();
+        // Providing really laggy game
+        setupCanvas();
     }
 
     public void translateDraggables(double x) {
         gameObjectLayerDraggable.setTranslateX(x);
         starFactory.setTranslateX(x);
-//        canvasLayer.setTranslateX(x);
         // Update planet positions and canvas layer
         updateView();
     }
@@ -106,7 +105,7 @@ public class V_PlayScene extends View {
         backgroundLayer.setPrefSize(Config.PLAY_AREA_SIZE / 2, pane.getHeight());
 
         starFactory = new StarFactory(backgroundLayer.getPrefWidth(), backgroundLayer.getPrefHeight());
-        starFactory.setNoOfStars(300);
+        starFactory.setNoOfStars(500);
         backgroundLayer.getChildren().addAll(starFactory.buildStars());
 
         pane.getChildren().add(backgroundLayer);
@@ -114,24 +113,19 @@ public class V_PlayScene extends View {
 
     private void setupCanvas() {
 
-        canvasLayer = CanvasLayer.getInstance();
+        canvasLayer = new Canvas(Config.PLAY_AREA_SIZE, pane.getHeight());
 
-        if (canvasLayer == null) {
-            // Setup canvas and graphics context
-            Canvas canvas = new Canvas(5000, pane.getHeight());
-            GraphicsContext gc = canvas.getGraphicsContext2D();
+        // Setup canvas and graphics context
+        GraphicsContext gc = canvasLayer.getGraphicsContext2D();
 
-            // Set the graphics context layer up
-            GameObject.setGraphicsContext(gc);
+        // Set the graphics context layer up
+        GameObject.setGraphicsContext(gc);
 
-            // Debug stuff
-            // Debug graphic line in the center;
-            if (Config.DEBUG) {
-                gc.setStroke(Color.YELLOW);
-                gc.strokeLine(0, canvas.getHeight()/2, canvas.getWidth(), canvas.getHeight()/2);
-            }
-
-            canvasLayer = CanvasLayer.setCanvas(canvas);
+        // Debug stuff
+        // Debug graphic line in the center;
+        if (Config.DEBUG) {
+            gc.setStroke(Color.YELLOW);
+            gc.strokeLine(0, canvasLayer.getHeight()/2, canvasLayer.getWidth(), canvasLayer.getHeight()/2);
         }
 
 
@@ -143,8 +137,8 @@ public class V_PlayScene extends View {
         hideTooltip();
         tooltip = new Pane();
         tooltip.setStyle("-fx-background-color: rgba(45,46,48,0.98)");
-        tooltip.setTranslateX(body.getLayoutX() + mouseEvent.getX() + 10.0);
-        tooltip.setTranslateY(body.getLayoutY() + mouseEvent.getY() + 10.0);
+        tooltip.setTranslateX(body.getPosition().x + mouseEvent.getX() + 10.0);
+        tooltip.setTranslateY(body.getPosition().y + mouseEvent.getY() + 10.0);
 
         boolean isKnown = M_PlayerData.getInstance().isKnown(body);
         String title = isKnown ? body.getName() : "Unknown Body";

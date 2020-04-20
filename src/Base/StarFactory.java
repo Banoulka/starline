@@ -14,7 +14,7 @@ import java.util.Random;
 public class StarFactory {
 
     // Path to resources directory
-    private final static File resourcesDir = new File("src/Resources");
+    private final static File resourcesDir = new File("src/Resources/Min");
 
     // Filter to get all stars
     private final static FilenameFilter starFilter = (dir, name) -> name.startsWith("STAR");
@@ -49,15 +49,15 @@ public class StarFactory {
 
                     // Get the new image as a javafx image from the URI
                     ImageView img = new ImageView(currFile.toURI().toString());
-                    System.out.println("StarFactory Star Found :: " + currFile.getName());
+                    System.out.println("IStarBuilder Star Found :: " + currFile.getName());
 
                     // Add the image to the star list array
                     starSprites.add(img);
                 }
-            } else System.err.println("StarFactory :: No star images found");
+            } else System.err.println("IStarBuilder :: No star images found");
 
         } else {
-            System.out.println("StarFactory :: Sprites already loaded");
+            System.out.println("IStarBuilder :: Sprites already loaded");
         }
     }
 

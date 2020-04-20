@@ -1,11 +1,9 @@
 package Abstracts;
 
-import Base.Coord;
 import Base.Interfaces.Actions.IClickable;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.effect.ColorAdjust;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 public abstract class CelestialBody extends GameObject implements IClickable {
@@ -13,13 +11,6 @@ public abstract class CelestialBody extends GameObject implements IClickable {
     protected String name;
     protected double gravityPull;
     protected boolean hasAtmosphere;
-
-    public CelestialBody(Coord startingCords, String name, double gravityPull, double size, boolean hasAtmosphere) {
-        super(startingCords, size, new ImageView("/Resources/" + name.toUpperCase() + ".png"));
-        this.name = name;
-        this.gravityPull = gravityPull;
-        this.hasAtmosphere = hasAtmosphere;
-    }
 
     public CelestialBody() {}
 
@@ -71,5 +62,17 @@ public abstract class CelestialBody extends GameObject implements IClickable {
 
     public void setHasAtmosphere(boolean hasAtmosphere) {
         this.hasAtmosphere = hasAtmosphere;
+    }
+
+    @Override
+    public String toString() {
+        return "CelestialBody{" +
+                "name='" + name + '\'' +
+                ", gravityPull=" + gravityPull +
+                ", hasAtmosphere=" + hasAtmosphere +
+                ", position=" + position +
+                ", goHeight=" + goHeight +
+                ", goWidth=" + goWidth +
+                '}';
     }
 }

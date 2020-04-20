@@ -1,5 +1,25 @@
 package Base.Builders;
 
-public class StarBuilder extends PlanetBuilder {
+import Base.Planets.Star;
 
+public class StarBuilder extends
+    CelestialBodyBuilder<Star, StarBuilder> {
+
+    Star star = new Star();
+
+    @Override
+    protected Star getObj() { return star; }
+
+    @Override
+    protected StarBuilder self() { return this; }
+
+    @Override
+    public Star build() {
+        return star;
+    }
+
+    @Override
+    public void clear() {
+        star = new Star();
+    }
 }

@@ -2,6 +2,7 @@ package MVCs.PlayerData;
 
 import Abstracts.CelestialBody;
 import Abstracts.Model;
+import Base.Misc.PlayerGO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,17 +13,34 @@ public class M_PlayerData extends Model {
     private String playerName = "TestPlayer";
     private int playerMoney = 0;
 
+    private CelestialBody currPlanet = null;
 
     private List<CelestialBody> knownBodies;
 
     private static M_PlayerData self = null;
 
+    private PlayerGO playerGO;
+
     private M_PlayerData() {
         knownBodies = new ArrayList<>();
+        playerGO = new PlayerGO();
+        playerGO.setGoHeight(50);
+        playerGO.setGoWidth(50);
+        playerGO.setImg("rocket");
+        playerGO.buildBoundingBox();
     }
 
-    public void addPlanet(CelestialBody body) {
-        if (!isKnown(body)) knownBodies.add(body);
+    public CelestialBody getCurrPlanet() {
+        return currPlanet;
+    }
+
+    public void setCurrPlanet(CelestialBody currPlanet) {
+        this.currPlanet = currPlanet;
+    }
+
+    public void addKnownBody(CelestialBody body) {
+        if (!isKnown(body))
+            knownBodies.add(body);
     }
 
     public boolean isKnown(CelestialBody body) {
@@ -60,6 +78,6 @@ public class M_PlayerData extends Model {
 
     @Override
     public String toString() {
-        return "Player Data Model";
+        return "PlayerGO Data Model";
     }
 }

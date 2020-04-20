@@ -3,6 +3,7 @@ package Abstracts;
 import Base.Config;
 import Base.Coord;
 import javafx.geometry.BoundingBox;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
@@ -17,27 +18,9 @@ public abstract class GameObject extends Region {
 
     protected static GraphicsContext gc;
 
+    private Canvas canvas;
+
     protected BoundingBox boundingBox;
-
-    public GameObject(Coord startingCords, double size, ImageView img) {
-        this.goWidth = size * Config.SCALE_MODIFIER;
-        this.goHeight = this.goWidth;
-
-        // Calculate the new coords based on size
-        this.position = new Coord(startingCords.x, startingCords.y - (this.goWidth / 2));
-
-        // Draw the bounding box
-        this.boundingBox = new BoundingBox(position.x, position.y, this.goWidth, this.goHeight);
-
-        if (img != null) {
-            this.img = img;
-            this.getChildren().add(img);
-        }
-        else
-            System.err.println(getClass().getName() + " image not found");
-
-        this.update();
-    }
 
     public GameObject(){}
 
@@ -49,6 +32,10 @@ public abstract class GameObject extends Region {
         if (img != null) {
             img.setFitHeight(goHeight);
             img.setFitWidth(goWidth);
+
+            img.setScaleX(this.getScaleX());
+            img.setScaleY(this.getScaleY());
+            img.setRotate(this.getRotate());
         }
 
         if (Config.DEBUG && gc != null) {
@@ -83,11 +70,24 @@ public abstract class GameObject extends Region {
         return img;
     }
 
+    public double getGoHeight() {
+        return goHeight;
+    }
+
+    public double getGoWidth() {
+        return goWidth;
+    }
+
     public void setImg(String imageName) {
-        this.img = new ImageView("/Resources/" + imageName.toUpperCase() + ".png");
-        this.img.setFitWidth(goWidth);
-        this.img.setFitHeight(goHeight);
-        this.getChildren().add(this.img);
+        try {
+            this.img = new ImageView("/Resources/Src/" + imageName.toUpperCase() + ".png");
+            this.img.setFitWidth(goWidth);
+            this.img.setFitHeight(goHeight);
+            this.getChildren().add(this.img);
+        } catch (IllegalArgumentException e) {
+            System.err.println("Resource not found: " + imageName.toUpperCase() + ".png");
+            this.img = null;
+        }
     }
 
     public void setPosition(Coord position) {
@@ -107,4 +107,6 @@ public abstract class GameObject extends Region {
     public void buildBoundingBox() {
         this.boundingBox = new BoundingBox(position.x, position.y, this.goWidth, this.goHeight);
     }
+
+    public abstract void startAnimation();
 }
