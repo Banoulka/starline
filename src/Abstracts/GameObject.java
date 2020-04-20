@@ -2,12 +2,15 @@ package Abstracts;
 
 import Base.Config;
 import Base.Coord;
+import MVCs.PlayerData.M_PlayerData;
 import javafx.geometry.BoundingBox;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import org.w3c.dom.css.Rect;
 
 public abstract class GameObject extends Region {
 
@@ -28,6 +31,8 @@ public abstract class GameObject extends Region {
         this.setLayoutX(position.x);
         this.setLayoutY(position.y);
         this.setPrefSize(goWidth, goHeight);
+        this.setWidth(goWidth);
+        this.setHeight(goHeight);
 
         if (img != null) {
             img.setFitHeight(goHeight);
@@ -35,7 +40,6 @@ public abstract class GameObject extends Region {
 
             img.setScaleX(this.getScaleX());
             img.setScaleY(this.getScaleY());
-            img.setRotate(this.getRotate());
         }
 
         if (Config.DEBUG && gc != null) {
@@ -51,6 +55,17 @@ public abstract class GameObject extends Region {
             // Draw circle in center of gameObject
             gc.setFill(Color.GREEN);
             gc.fillOval(getCenter().x - 15, getCenter().y - 15, 30, 30);
+
+
+        } else if (Config.DEBUG) {
+            Rectangle debugRect = new Rectangle();
+            debugRect.setFill(null);
+            debugRect.setStroke(Color.RED);
+            debugRect.setWidth(goWidth);
+            debugRect.setHeight(goHeight);
+
+            // Add debug rect to this
+            this.getChildren().add(debugRect);
         }
     }
 
@@ -78,9 +93,17 @@ public abstract class GameObject extends Region {
         return goWidth;
     }
 
+    public void moveX(double x) {
+        this.position.x += x;
+    }
+
+    public void moveY(double y) {
+        this.position.y += y;
+    }
+
     public void setImg(String imageName) {
         try {
-            this.img = new ImageView("/Resources/Src/" + imageName.toUpperCase() + ".png");
+            this.img = new ImageView("/Resources/Min/" + imageName.toUpperCase() + ".png");
             this.img.setFitWidth(goWidth);
             this.img.setFitHeight(goHeight);
             this.getChildren().add(this.img);

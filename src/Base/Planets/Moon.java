@@ -54,6 +54,8 @@ public class Moon extends CelestialBody
     public void update() {
         orbitPlanet();
         this.setPrefSize(goWidth, goHeight);
+        this.setWidth(goWidth);
+        this.setHeight(goHeight);
 
         this.position.x = getTranslateX() + getLayoutX();
         this.position.y = getTranslateY() + getLayoutY();

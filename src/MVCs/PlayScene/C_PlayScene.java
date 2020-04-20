@@ -11,6 +11,7 @@ import Base.Interfaces.Actions.IHoverable;
 import Base.Interfaces.Actions.IPannable;
 import Base.Interfaces.Actions.ITooltip;
 import Base.Interfaces.IRunAfter;
+import Base.Misc.PlayerGO;
 import Base.Planets.Moon;
 import Base.Planets.Planet;
 import Base.SceneManager;
@@ -28,8 +29,10 @@ public class C_PlayScene extends Controller implements IRunAfter {
     protected M_PlayScene model;
     protected V_PlayScene view;
 
-    // Local instance of playerdata
+    // Local instance of playerData
     private M_PlayerData playerData = M_PlayerData.getInstance();
+
+    private PlayerGO player;
 
     public C_PlayScene(Pane root) {
 
@@ -89,9 +92,7 @@ public class C_PlayScene extends Controller implements IRunAfter {
         });
 
         // Reset cursor on released
-        layerDraggable.setOnMouseReleased(mouseEvent -> {
-            layerDraggable.setCursor(Cursor.DEFAULT);
-        });
+        layerDraggable.setOnMouseReleased(mouseEvent -> layerDraggable.setCursor(Cursor.DEFAULT));
     }
 
     private void setupEvents() {
@@ -125,16 +126,44 @@ public class C_PlayScene extends Controller implements IRunAfter {
             gameObject.startAnimation();
         }
 
+    }
+
+    private void setupPlayerData() {
+        // Set player to whatever planet they are on
+        player = playerData.getPlayerGO();
+
         // Always start with the earth and sun known
         CelestialBody earth = model.findBody("Earth");
-
-        // If the player is not currently on ANY planet... should only be on startup
-        // then add them to earth
-        playerData.setCurrPlanet(earth);
 
         playerData.addKnownBody(earth);
         playerData.addKnownBody(model.findBody("The Sun"));
 
+        // If the player is not currently on ANY planet... should only be on startup
+        // then add them to earth
+
+        CelestialBody currPlanet = playerData.getCurrPlanet();
+
+        if (currPlanet == null) {
+            playerData.setCurrPlanet(earth);
+            // Reassign the current planet
+            currPlanet = playerData.getCurrPlanet();
+        }
+
+
+        // Set the position of the player to the current planet
+        player.setPosition(new Coord(
+                currPlanet.getPosition().x - currPlanet.getTranslateX() + (currPlanet.getGoWidth()/2) - (player.getGoWidth()/2),
+                currPlanet.getPosition().y - currPlanet.getTranslateY() - player.getGoHeight()/2 + 10
+        ));
+
+        // Bind properties so the player moves with the planets
+        // TODO: Make the player move AROUND the planet with the rotation??
+        player.translateXProperty().bind(currPlanet.translateXProperty());
+        player.translateYProperty().bind(currPlanet.translateYProperty());
+
+        // Add the player to the draggable layer
+        view.getGameObjectLayerDraggable().getChildren().add(player);
+        player.toBack();
     }
 
     public void visit(CelestialBody celestialBody) {
@@ -159,6 +188,7 @@ public class C_PlayScene extends Controller implements IRunAfter {
         setupObjects();
         setupEvents();
         setupAnimationTimer();
+        setupPlayerData();
     }
 
     @Override

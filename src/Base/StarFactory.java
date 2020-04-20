@@ -1,14 +1,14 @@
 package Base;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
+import javafx.animation.*;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
 import java.io.File;
 import java.io.FilenameFilter;
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class StarFactory {
@@ -33,8 +33,16 @@ public class StarFactory {
 
     private ArrayList<Star> stars;
 
-    public StarFactory(double parentWidth, double parentHeight) {
+    private StarType starType;
 
+    public enum StarType {
+        RANDOM,
+        ANIMATE_LEFT
+    }
+
+    public StarFactory(double parentWidth, double parentHeight, StarType type) {
+
+        this.starType = type;
         this.parentWidth = parentWidth - 50;
         this.parentHeight = parentHeight - 50;
 
@@ -82,11 +90,47 @@ public class StarFactory {
             ImageView currImage = new ImageView(starSprites.get(r.nextInt(starSprites.size())).getImage());
 
             // Add the new star to the list
-            // TODO: switch up the star types
-            Star starToAdd  = new StarOne(currImage, parentWidth, parentHeight);
 
-            stars.add(starToAdd);
-            imageViews.add(starToAdd.getCurrImage());
+            List<Class<? extends Star>> starTypes = new ArrayList<>();
+            starTypes.add(StarOne.class);
+            starTypes.add(StarTwo.class);
+            // Add as many star classes
+
+            // Get a random class to add
+            Class<? extends Star> randomClass = starTypes.get(Utils.random.nextInt(starTypes.size()-1));
+
+            Star starToAdd = null;
+
+            // Try to instantiate the star class
+            try {
+                 starToAdd = randomClass
+                        .getDeclaredConstructor(ImageView.class, double.class, double.class)
+                        .newInstance(currImage, parentWidth, parentHeight);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            // If it is successful, add it to the list
+            if (starToAdd != null) {
+
+                if (starType == StarType.ANIMATE_LEFT) {
+
+                    ImageView starImage = starToAdd.getCurrImage();
+
+                    // Add an animation to the stars
+                    TranslateTransition tt = new TranslateTransition(Duration.millis((starToAdd.getSize() * starToAdd.getSize()) * 150), starImage);
+                    tt.setFromX(starImage.getX() - parentWidth);
+                    tt.setToX(parentWidth);
+                    tt.setAutoReverse(false);
+                    tt.setInterpolator(Interpolator.LINEAR);
+                    tt.setCycleCount(Timeline.INDEFINITE);
+                    tt.play();
+                }
+
+                stars.add(starToAdd);
+                imageViews.add(starToAdd.getCurrImage());
+            }
+
         }
 
         return imageViews;
@@ -94,18 +138,6 @@ public class StarFactory {
 
     public void setNoOfStars(int noOfStars) {
         this.noOfStars = noOfStars;
-    }
-}
-
-class StarOne extends Star {
-    public StarOne(ImageView imageView, double parentWidth, double parentHeight) {
-        super(imageView, 15, 0.75f, parentWidth, parentHeight);
-    }
-}
-
-class StarTwo extends Star {
-    public StarTwo(ImageView imageView, double parentWidth, double parentHeight) {
-        super(imageView, 30, 1.5f, parentWidth, parentHeight);
     }
 }
 
@@ -189,5 +221,17 @@ abstract class Star {
 
     public double getSize() {
         return size;
+    }
+}
+
+class StarOne extends Star {
+    public StarOne(ImageView imageView, double parentWidth, double parentHeight) {
+        super(imageView, 15, 0.75f, parentWidth, parentHeight);
+    }
+}
+
+class StarTwo extends Star {
+    public StarTwo(ImageView imageView, double parentWidth, double parentHeight) {
+        super(imageView, 30, 1.5f, parentWidth, parentHeight);
     }
 }

@@ -104,7 +104,7 @@ public class V_PlayScene extends View {
         Pane backgroundLayer = new Pane();
         backgroundLayer.setPrefSize(Config.PLAY_AREA_SIZE / 2, pane.getHeight());
 
-        starFactory = new StarFactory(backgroundLayer.getPrefWidth(), backgroundLayer.getPrefHeight());
+        starFactory = new StarFactory(backgroundLayer.getPrefWidth(), backgroundLayer.getPrefHeight(), StarFactory.StarType.RANDOM);
         starFactory.setNoOfStars(500);
         backgroundLayer.getChildren().addAll(starFactory.buildStars());
 
@@ -159,7 +159,7 @@ public class V_PlayScene extends View {
         }
 
 
-        if (body instanceof IVisitable) {
+        if (body instanceof IVisitable && body != M_PlayerData.getInstance().getCurrPlanet()) {
             Button visitButton = new Button();
             visitButton.setText("Visit");
             vBox.getChildren().add(visitButton);

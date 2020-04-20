@@ -54,4 +54,8 @@ public class SceneManager {
         if (currentScene instanceof IRunAfter)
             ((IRunAfter) currentScene).runAfter();
     }
+
+    public static ExtendableScene getSceneParent() {
+        return sceneParent;
+    }
 }
