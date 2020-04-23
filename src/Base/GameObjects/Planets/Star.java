@@ -1,10 +1,9 @@
-package Base.Planets;
+package Base.GameObjects.Planets;
 
 import Abstracts.CelestialBody;
 import Base.Interfaces.Actions.IPannable;
 import Base.Interfaces.Actions.ITooltip;
 import javafx.animation.*;
-import javafx.scene.effect.ColorAdjust;
 import javafx.util.Duration;
 
 public class Star extends CelestialBody implements IPannable, ITooltip {

@@ -1,6 +1,6 @@
 package Base.Builders;
 
-import Base.Planets.Moon;
+import Base.GameObjects.Planets.Moon;
 
 public class MoonBuilder extends
     CelestialBodyBuilder<Moon, MoonBuilder> {

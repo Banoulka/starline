@@ -24,7 +24,7 @@ public class VisitScene extends BorderPane implements IRunAfter {
                     .hasAtmosphere(false)
                     .gravityPull(4)
                     .sizeSquare(6)
-                    .position(new Coord(10000, 460))
+                    .position(new Coord(3200, 460))
                     .build();
         }
 

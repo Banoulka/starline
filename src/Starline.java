@@ -1,6 +1,4 @@
 import Base.SceneManager;
-import Base.Scenes.PlayScene;
-import Base.Scenes.StartScene;
 import Base.Scenes.VisitScene;
 import javafx.application.Application;
 import javafx.stage.Stage;

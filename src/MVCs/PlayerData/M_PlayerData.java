@@ -4,7 +4,7 @@ import Abstracts.CelestialBody;
 import Abstracts.Model;
 import Base.Builders.PlayerBuilder;
 import Base.Coord;
-import Base.Misc.PlayerGO;
+import Base.GameObjects.PlayerGO;
 
 import java.util.ArrayList;
 import java.util.List;

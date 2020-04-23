@@ -1,4 +1,4 @@
-package Base.Misc;
+package Base.GameObjects;
 
 import Abstracts.CelestialBody;
 import Abstracts.GameObject;

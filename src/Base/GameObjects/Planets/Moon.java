@@ -1,12 +1,10 @@
-package Base.Planets;
+package Base.GameObjects.Planets;
 
 import Abstracts.CelestialBody;
 import Base.Config;
 import Base.Interfaces.Actions.IPannable;
 import Base.Interfaces.Actions.IVisitable;
 import javafx.animation.*;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;

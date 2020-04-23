@@ -5,13 +5,16 @@ import Abstracts.Controller;
 import Abstracts.ExtendableScene;
 import Base.Coord;
 import Base.Interfaces.IRunAfter;
-import Base.Misc.PlayerGO;
+import Base.GameObjects.PlayerGO;
 import Base.SceneManager;
 import Base.Scenes.PlayScene;
 import MVCs.PlayerData.M_PlayerData;
 import javafx.animation.AnimationTimer;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
+import javafx.util.Duration;
 
 public class C_VisitScene extends Controller implements IRunAfter {
 
@@ -23,6 +26,12 @@ public class C_VisitScene extends Controller implements IRunAfter {
 
     private final Coord moveBy = new Coord(0, 0);
 
+    private double distance;
+
+    // Timelines
+    Timeline countdownTimer;
+    Timeline uiTimeline;
+
     public C_VisitScene(Pane root, CelestialBody visiting) {
         model = new M_VisitScene(visiting);
         view = new V_VisitScene(root, model, this);
@@ -33,9 +42,7 @@ public class C_VisitScene extends Controller implements IRunAfter {
         // Abs to get positive value
         // Floor to remove decimals
         // Divide by fuel level
-        double distance = Math.floor(
-                Math.abs((player.getPosition().x - visiting.getPosition().x)) / 40 / playerData.getFuelLevel()) +
-                Math.floor(Math.abs((player.getPosition().x - visiting.getPosition().x) / 150));
+        distance = Math.floor( Math.abs((player.getPosition().x - visiting.getPosition().x)) / 40 / playerData.getFuelLevel() );
 
         System.out.println("Distance: " + distance + " seconds");
     }
@@ -82,14 +89,18 @@ public class C_VisitScene extends Controller implements IRunAfter {
             if (keyEvent.getCode() == KeyCode.A)
                 moveBy.x += 1;
         });
-    }
 
-    private double lerp(double a, double b, double f)
-    {
-        return a + f * (b - a);
+        // All mouse events
+        view.getPane().setOnMouseMoved(view::changeMouseEvent);
+        view.getPane().setOnMouseDragged(view::changeMouseEvent);
+
+        // Setup player shooting
+        view.getPane().setOnMousePressed(view::createBullet);
     }
 
     private void setupAnimationTimer() {
+
+        // Animation timer for player movement
         new AnimationTimer() {
             @Override
             public void handle(long l) {
@@ -101,6 +112,38 @@ public class C_VisitScene extends Controller implements IRunAfter {
                 view.updateView();
             }
         }.start();
+
+        // Timeline for UI stuff
+        uiTimeline = new Timeline();
+
+        KeyFrame keyStart = new KeyFrame(
+                Duration.seconds(0),
+                e -> view.updateUI((1160 / distance) * 0.005)
+        );
+        KeyFrame keyEnd = new KeyFrame(Duration.millis(5));
+
+        uiTimeline.getKeyFrames().addAll(keyStart, keyEnd);
+        uiTimeline.setCycleCount(Timeline.INDEFINITE);
+        uiTimeline.setAutoReverse(false);
+
+
+        countdownTimer = new Timeline(
+                new KeyFrame(
+                        Duration.seconds(distance - (1160 / distance) * 0.005),
+                        e -> journeyComplete()
+                )
+        );
+    }
+
+    public void startTimers() {
+        uiTimeline.play();
+        countdownTimer.play();
+    }
+
+    private void journeyComplete() {
+        uiTimeline.stop();
+        countdownTimer.stop();
+        System.out.println("Journey complete");
     }
 
     @Override

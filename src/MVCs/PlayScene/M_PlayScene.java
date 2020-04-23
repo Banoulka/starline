@@ -8,9 +8,9 @@ import Base.Builders.PlanetBuilder;
 import Base.Builders.StarBuilder;
 import Base.Coord;
 import Base.Interfaces.Actions.IEvent;
-import Base.Planets.Moon;
-import Base.Planets.Planet;
-import Base.Planets.Star;
+import Base.GameObjects.Planets.Moon;
+import Base.GameObjects.Planets.Planet;
+import Base.GameObjects.Planets.Star;
 
 import java.util.ArrayList;
 import java.util.List;

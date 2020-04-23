@@ -1,6 +1,6 @@
 package Base.Builders;
 
-import Base.Misc.PlayerGO;
+import Base.GameObjects.PlayerGO;
 import MVCs.PlayerData.M_PlayerData;
 
 public class PlayerBuilder extends GameObjectBuilder<PlayerGO, PlayerBuilder> {

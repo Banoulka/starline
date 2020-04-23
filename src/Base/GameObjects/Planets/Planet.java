@@ -1,4 +1,4 @@
-package Base.Planets;
+package Base.GameObjects.Planets;
 
 import Abstracts.CelestialBody;
 import Base.Config;

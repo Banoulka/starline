@@ -1,7 +1,7 @@
 package Base.Builders;
 
-import Base.Planets.Moon;
-import Base.Planets.Planet;
+import Base.GameObjects.Planets.Moon;
+import Base.GameObjects.Planets.Planet;
 
 public class PlanetBuilder extends
         CelestialBodyBuilder<Planet, PlanetBuilder> {

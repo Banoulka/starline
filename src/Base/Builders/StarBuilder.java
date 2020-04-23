@@ -1,6 +1,6 @@
 package Base.Builders;
 
-import Base.Planets.Star;
+import Base.GameObjects.Planets.Star;
 
 public class StarBuilder extends
     CelestialBodyBuilder<Star, StarBuilder> {

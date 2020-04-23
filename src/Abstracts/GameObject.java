@@ -2,7 +2,6 @@ package Abstracts;
 
 import Base.Config;
 import Base.Coord;
-import MVCs.PlayerData.M_PlayerData;
 import javafx.geometry.BoundingBox;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -10,7 +9,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import org.w3c.dom.css.Rect;
 
 public abstract class GameObject extends Region {
 
@@ -33,31 +31,16 @@ public abstract class GameObject extends Region {
         this.setPrefSize(goWidth, goHeight);
         this.setWidth(goWidth);
         this.setHeight(goHeight);
+        this.boundingBox = new BoundingBox(position.x, position.y, this.goWidth, this.goHeight);
 
         if (img != null) {
             img.setFitHeight(goHeight);
             img.setFitWidth(goWidth);
-
             img.setScaleX(this.getScaleX());
             img.setScaleY(this.getScaleY());
         }
 
-        if (Config.DEBUG && gc != null) {
-            gc.setStroke(Color.RED);
-
-            // Draw bounding box over the boundaries
-            gc.strokeRect(position.x, position.y, goWidth, goHeight);
-
-            // Draw circle in posX and posY of the game object
-            gc.setFill(Color.BLUE);
-            gc.fillOval(position.x - 15, position.y - 15, 30, 30);
-
-            // Draw circle in center of gameObject
-            gc.setFill(Color.GREEN);
-            gc.fillOval(getCenter().x - 15, getCenter().y - 15, 30, 30);
-
-
-        } else if (Config.DEBUG) {
+        if (Config.DEBUG) {
             Rectangle debugRect = new Rectangle();
             debugRect.setFill(null);
             debugRect.setStroke(Color.RED);
@@ -67,6 +50,7 @@ public abstract class GameObject extends Region {
             // Add debug rect to this
             this.getChildren().add(debugRect);
         }
+
     }
 
     public Coord getCenter() {
@@ -102,14 +86,16 @@ public abstract class GameObject extends Region {
     }
 
     public void setImg(String imageName) {
-        try {
-            this.img = new ImageView("/Resources/Min/" + imageName.toUpperCase() + ".png");
-            this.img.setFitWidth(goWidth);
-            this.img.setFitHeight(goHeight);
-            this.getChildren().add(this.img);
-        } catch (IllegalArgumentException e) {
-            System.err.println("Resource not found: " + imageName.toUpperCase() + ".png");
-            this.img = null;
+        if (imageName != null) {
+            try {
+                this.img = new ImageView("/Resources/Min/" + imageName.toUpperCase() + ".png");
+                this.img.setFitWidth(goWidth);
+                this.img.setFitHeight(goHeight);
+                this.getChildren().add(this.img);
+            } catch (IllegalArgumentException e) {
+                System.err.println("Resource not found: " + imageName.toUpperCase() + ".png");
+                this.img = null;
+            }
         }
     }
 
@@ -129,6 +115,10 @@ public abstract class GameObject extends Region {
 
     public void buildBoundingBox() {
         this.boundingBox = new BoundingBox(position.x, position.y, this.goWidth, this.goHeight);
+    }
+
+    public BoundingBox getBoundingBox() {
+        return boundingBox;
     }
 
     public abstract void startAnimation();
