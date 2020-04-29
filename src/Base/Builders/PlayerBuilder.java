@@ -1,7 +1,6 @@
 package Base.Builders;
 
 import Base.GameObjects.PlayerGO;
-import MVCs.PlayerData.M_PlayerData;
 
 public class PlayerBuilder extends GameObjectBuilder<PlayerGO, PlayerBuilder> {
 
@@ -17,20 +16,28 @@ public class PlayerBuilder extends GameObjectBuilder<PlayerGO, PlayerBuilder> {
         return this;
     }
 
-    public PlayerBuilder playerDataReference(M_PlayerData ref) {
-        playerGO.setPlayerData(ref);
-        return self();
+    public PlayerBuilder setRotate(double rotate) {
+        playerGO.setRotate(rotate);
+        return this;
+    }
+
+    private void updatePlayer() {
+        playerGO.update();
     }
 
     @Override
     public void clear() {
-
+        playerGO = new PlayerGO();
     }
 
     @Override
     public PlayerGO build() {
         playerGO.buildBoundingBox();
+        playerGO.update();
 
-        return playerGO;
+        PlayerGO playerToReturn = playerGO;
+        clear();
+
+        return playerToReturn;
     }
 }

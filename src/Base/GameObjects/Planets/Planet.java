@@ -1,8 +1,8 @@
 package Base.GameObjects.Planets;
 
 import Abstracts.CelestialBody;
-import Base.Config;
-import Base.Coord;
+import Base.Utility.Config;
+import Base.Utility.Coord;
 import Base.Interfaces.Actions.IPannable;
 import Base.Interfaces.Actions.IVisitable;
 import javafx.animation.Interpolator;

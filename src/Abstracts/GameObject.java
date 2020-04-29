@@ -1,8 +1,10 @@
 package Abstracts;
 
-import Base.Config;
-import Base.Coord;
+import Base.Utility.Config;
+import Base.Utility.Coord;
+import javafx.collections.ObservableList;
 import javafx.geometry.BoundingBox;
+import javafx.scene.Node;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.ImageView;
@@ -53,6 +55,11 @@ public abstract class GameObject extends Region {
 
     }
 
+    @Override
+    public ObservableList<Node> getChildren() {
+        return super.getChildren();
+    }
+
     public Coord getCenter() {
         return new Coord(position.x + (goWidth / 2), position.y + (goHeight / 2));
     }
@@ -86,6 +93,10 @@ public abstract class GameObject extends Region {
     }
 
     public void setImg(String imageName) {
+        // If there is already an image, remove it
+        if (this.img != null)
+            this.getChildren().remove(this.img);
+
         if (imageName != null) {
             try {
                 this.img = new ImageView("/Resources/Min/" + imageName.toUpperCase() + ".png");

@@ -9,3 +9,25 @@
 .primary:hover {
     -fx-background-color: #2a3dbf;
 }
+
+.action-btn {
+    -fx-background-color: #6b43cc;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+    -fx-border-radius: 2px;
+    -fx-padding: 10 20;
+}
+
+.action-btn:hover {
+    -fx-background-color: #8f4dfb;
+}
+
+.action-btn:armed {
+    -fx-background-color: #46257a;
+}
+
+.margin-bottom {
+    -fx-padding: 0px 0px 5px 0px;
+    -fx-border-insets: 0px 0px 5px 0px;
+    -fx-background-insets: 0px 0px 5px 0px;
+}

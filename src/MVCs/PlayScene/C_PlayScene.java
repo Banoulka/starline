@@ -3,7 +3,9 @@ package MVCs.PlayScene;
 import Abstracts.CelestialBody;
 import Abstracts.Controller;
 import Abstracts.GameObject;
-import Base.Coord;
+import Base.Controls.PlayerController;
+import Base.Scenes.ViewScene;
+import Base.Utility.Coord;
 import Base.EventManager;
 import Base.Interfaces.Actions.IClickable;
 import Base.Interfaces.Actions.IHoverable;
@@ -27,8 +29,6 @@ public class C_PlayScene extends Controller implements IRunAfter {
 
     // Local instance of playerData
     private M_PlayerData playerData = M_PlayerData.getInstance();
-
-    private PlayerGO player;
 
     public C_PlayScene(Pane root) {
 
@@ -126,7 +126,7 @@ public class C_PlayScene extends Controller implements IRunAfter {
 
     private void setupPlayerData() {
         // Set player to whatever planet they are on
-        player = playerData.getPlayerGO();
+        PlayerGO player = PlayerController.get().getPlayerForPlayScene();
 
         // Always start with the earth and sun known
         CelestialBody earth = model.findBody("Earth");
@@ -136,15 +136,12 @@ public class C_PlayScene extends Controller implements IRunAfter {
 
         // If the player is not currently on ANY planet... should only be on startup
         // then add them to earth
-
         CelestialBody currPlanet = playerData.getCurrPlanet();
-
         if (currPlanet == null) {
             playerData.setCurrPlanet(earth);
             // Reassign the current planet
             currPlanet = playerData.getCurrPlanet();
         }
-
 
         // Set the position of the player to the current planet
         player.setPosition(new Coord(
@@ -173,6 +170,10 @@ public class C_PlayScene extends Controller implements IRunAfter {
                 view.updateView();
             }
         }.start();
+    }
+
+    public void view(CelestialBody celestialBody) {
+        SceneManager.setCurrScene(new ViewScene(celestialBody));
     }
 
     @Override

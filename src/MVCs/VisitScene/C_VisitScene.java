@@ -3,37 +3,32 @@ package MVCs.VisitScene;
 import Abstracts.CelestialBody;
 import Abstracts.Controller;
 import Abstracts.ExtendableScene;
-import Base.Coord;
+import Base.Controls.PlayerController;
+import Base.Utility.Config;
 import Base.Interfaces.IRunAfter;
-import Base.GameObjects.PlayerGO;
 import Base.SceneManager;
 import Base.Scenes.PlayScene;
 import MVCs.PlayerData.M_PlayerData;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+
 
 public class C_VisitScene extends Controller implements IRunAfter {
 
     protected V_VisitScene view;
     protected M_VisitScene model;
 
-    private M_PlayerData playerData = M_PlayerData.getInstance();
-    private PlayerGO player = playerData.getPlayerGO();
-
-    private final Coord moveBy = new Coord(0, 0);
-
     private double distance;
 
     // Timelines
-    Timeline countdownTimer;
-    Timeline uiTimeline;
+    private Timeline countdownTimer;
+    private Timeline uiTimeline;
 
-    public C_VisitScene(Pane root, CelestialBody visiting) {
-        model = new M_VisitScene(visiting);
+    public C_VisitScene(Pane root, CelestialBody visitingBody) {
+        model = new M_VisitScene(visitingBody);
         view = new V_VisitScene(root, model, this);
 
         // TODO: remove back button or move it
@@ -42,7 +37,20 @@ public class C_VisitScene extends Controller implements IRunAfter {
         // Abs to get positive value
         // Floor to remove decimals
         // Divide by fuel level
-        distance = Math.floor( Math.abs((player.getPosition().x - visiting.getPosition().x)) / 40 / playerData.getFuelLevel() );
+        M_PlayerData playerData = M_PlayerData.getInstance();
+
+        CelestialBody currentPlanet = M_PlayerData.getInstance().getCurrPlanet();
+        // if current planet is null
+        // make up a value
+        if (currentPlanet != null)
+            distance = Math.floor( Math.abs((currentPlanet.getPosition().x - visitingBody.getPosition().x)) / 40 / playerData.getFuelLevel() );
+        else if (currentPlanet == null && Config.DEBUG)
+            distance = 30;
+        else
+            System.err.println("Debug is not on and current planet is not set");
+
+        if (distance < 10)
+            distance = 10;
 
         System.out.println("Distance: " + distance + " seconds");
     }
@@ -65,32 +73,11 @@ public class C_VisitScene extends Controller implements IRunAfter {
         ExtendableScene currScene = SceneManager.getSceneParent();
 
         // Controls for the player
-        currScene.setOnKeyPressed(keyEvent -> {
-            if (keyEvent.getCode() == KeyCode.W)
-                moveBy.y -= 1;
-            else if (keyEvent.getCode() == KeyCode.S)
-                moveBy.y += 1;
+        // Delegated to player controller
+        currScene.setOnKeyPressed(PlayerController.get()::onKeyPressed);
+        currScene.setOnKeyReleased(PlayerController.get()::onKeyReleased);
 
-            if (keyEvent.getCode() == KeyCode.D)
-                moveBy.x += 1;
-            else if (keyEvent.getCode() == KeyCode.A)
-                moveBy.x -= 1;
-        });
-
-        // Reset controls if the player releases keys
-        currScene.setOnKeyReleased(keyEvent -> {
-            if (keyEvent.getCode() == KeyCode.W)
-                moveBy.y += 1;
-            if (keyEvent.getCode() == KeyCode.S)
-                moveBy.y -= 1;
-
-            if (keyEvent.getCode() == KeyCode.D)
-                moveBy.x -= 1;
-            if (keyEvent.getCode() == KeyCode.A)
-                moveBy.x += 1;
-        });
-
-        // All mouse events
+        // All mouse movement events (for turret rotation)
         view.getPane().setOnMouseMoved(view::changeMouseEvent);
         view.getPane().setOnMouseDragged(view::changeMouseEvent);
 
@@ -104,11 +91,7 @@ public class C_VisitScene extends Controller implements IRunAfter {
         new AnimationTimer() {
             @Override
             public void handle(long l) {
-                // Get the signum values for the move by
-                moveBy.x = Math.signum(moveBy.x);
-                moveBy.y = Math.signum(moveBy.y);
-
-                view.movePlayer(moveBy);
+                view.movePlayer();
                 view.updateView();
             }
         }.start();
@@ -126,13 +109,19 @@ public class C_VisitScene extends Controller implements IRunAfter {
         uiTimeline.setCycleCount(Timeline.INDEFINITE);
         uiTimeline.setAutoReverse(false);
 
-
         countdownTimer = new Timeline(
                 new KeyFrame(
                         Duration.seconds(distance - (1160 / distance) * 0.005),
                         e -> journeyComplete()
                 )
         );
+
+        // Timeline for asteroids
+        Timeline asteroidTimer = new Timeline(
+                new KeyFrame(Duration.millis(2000), e -> model.AsteroidPool.spawn())
+        );
+        asteroidTimer.setCycleCount(Timeline.INDEFINITE);
+        asteroidTimer.play();
     }
 
     public void startTimers() {
@@ -144,6 +133,7 @@ public class C_VisitScene extends Controller implements IRunAfter {
         uiTimeline.stop();
         countdownTimer.stop();
         System.out.println("Journey complete");
+        goBackToPlay(model.getCurrentlyVisiting());
     }
 
     @Override

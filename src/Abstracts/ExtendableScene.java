@@ -1,6 +1,6 @@
 package Abstracts;
 
-import Base.Config;
+import Base.Utility.Config;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 

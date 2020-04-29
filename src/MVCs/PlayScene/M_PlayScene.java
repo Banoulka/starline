@@ -6,7 +6,8 @@ import Abstracts.Model;
 import Base.Builders.MoonBuilder;
 import Base.Builders.PlanetBuilder;
 import Base.Builders.StarBuilder;
-import Base.Coord;
+import Base.PlanetData.*;
+import Base.Utility.Coord;
 import Base.Interfaces.Actions.IEvent;
 import Base.GameObjects.Planets.Moon;
 import Base.GameObjects.Planets.Planet;
@@ -44,6 +45,7 @@ public class M_PlayScene extends Model {
                 .gravityPull(20)
                 .image("sun")
                 .position(new Coord(-450, startingHeight))
+                .planetData(new SunData())
                 .build();
 
         Planet mercury = pb
@@ -52,6 +54,7 @@ public class M_PlayScene extends Model {
                 .sizeSquare(1)
                 .gravityPull(1)
                 .position(new Coord(1400, startingHeight))
+                .planetData(new MercuryData())
                 .build();
 
         Planet venus = pb
@@ -60,6 +63,7 @@ public class M_PlayScene extends Model {
                 .sizeSquare(4)
                 .gravityPull(1)
                 .position(new Coord(1900, startingHeight))
+                .planetData(new VenusData())
                 .build();
 
         Moon moon = mb
@@ -68,6 +72,7 @@ public class M_PlayScene extends Model {
                 .sizeSquare(0.5)
                 .gravityPull(0.2)
                 .image("moon")
+                .planetData(new MoonData())
                 .build();
 
         Planet earth = pb
@@ -77,6 +82,7 @@ public class M_PlayScene extends Model {
                 .gravityPull(4)
                 .position(new Coord(3000, startingHeight))
                 .addMoon(moon)
+                .planetData(new EarthData())
                 .build();
 
         Planet mars = pb
@@ -85,6 +91,7 @@ public class M_PlayScene extends Model {
                 .sizeSquare(2)
                 .gravityPull(2)
                 .position(new Coord(4000, startingHeight))
+                .planetData(new MarsData())
                 .build();
 
         Planet jupiter = pb
@@ -93,6 +100,7 @@ public class M_PlayScene extends Model {
                 .gravityPull(4)
                 .sizeSquare(12)
                 .position(new Coord(5200, startingHeight))
+                .planetData(new JupiterData())
                 .build();
 
         Planet saturn = pb
@@ -101,6 +109,7 @@ public class M_PlayScene extends Model {
                 .gravityPull(4)
                 .sizeRect(11, 8.5)
                 .position(new Coord(7700, startingHeight))
+                .planetData(new SaturnData())
                 .build();
 
         Planet uranus = pb
@@ -109,6 +118,7 @@ public class M_PlayScene extends Model {
                 .gravityPull(4)
                 .sizeSquare(6)
                 .position(new Coord(10000, startingHeight))
+                .planetData(new UranusData())
                 .build();
 
         Planet neptune = pb
@@ -117,6 +127,7 @@ public class M_PlayScene extends Model {
                 .gravityPull(4)
                 .sizeSquare(6)
                 .position(new Coord(13500, startingHeight))
+                .planetData(new NeptuneData())
                 .build();
 
         gameObjects.add(sun);

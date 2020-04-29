@@ -1,6 +1,6 @@
-package Base;
+package Base.Utility;
 
-public class Coord {
+public class Coord implements Cloneable {
     public double x, y;
 
     public Coord() {
@@ -16,5 +16,11 @@ public class Coord {
     @Override
     public String toString() {
         return "X: " + x + " :: Y: " + y;
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        Coord cloned = (Coord) super.clone();
+        return cloned;
     }
 }

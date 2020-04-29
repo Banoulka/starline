@@ -1,7 +1,7 @@
 package Base.GameObjects.Planets;
 
 import Abstracts.CelestialBody;
-import Base.Config;
+import Base.Utility.Config;
 import Base.Interfaces.Actions.IPannable;
 import Base.Interfaces.Actions.IVisitable;
 import javafx.animation.*;
@@ -69,7 +69,6 @@ public class Moon extends CelestialBody
     public void startAnimation() {
         // Setup orbit animation
         PathTransition path = new PathTransition(Duration.seconds(40), parentPlanet.getOrbitPath(), this);
-        path.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
         path.setDelay(Duration.ZERO);
         path.setInterpolator(Interpolator.LINEAR);
 

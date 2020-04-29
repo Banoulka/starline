@@ -2,9 +2,10 @@ package MVCs.VisitScene;
 
 import Abstracts.GameObject;
 import Abstracts.View;
-import Base.Builders.BulletBuilder;
-import Base.Coord;
+import Base.Controls.PlayerController;
+import Base.Utility.Coord;
 import Base.GameObjects.Bullet;
+import Base.GameObjects.rOcks.Asteroid;
 import Base.Interfaces.IRunAfter;
 import Base.GameObjects.PlayerGO;
 import Base.StarFactory;
@@ -17,7 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.transform.Rotate;
 
 import java.util.Iterator;
 
@@ -32,20 +33,24 @@ public class V_VisitScene extends View implements IRunAfter {
 
     private Pane pane;
     private BorderPane ui;
-    private PlayerGO player = M_PlayerData.getInstance().getPlayerGO();
 
     private boolean playerEntered = false;
     private boolean playerLeaving = false;
-
 
     private Line goLineUI;
     private ImageView playerRocketUI;
     private ImageView gun;
 
+    private Line healthLine;
+
     private MouseEvent mouseEvent;
 
-    // Test
-    private Rectangle rect;
+    // Turret and rotation
+    private ImageView turret;
+    private Rotate turretRotation;
+
+    // Get the local player
+    private PlayerGO player = PlayerController.get().getPlayerForVisitScene();
 
     public V_VisitScene(Pane root, M_VisitScene model, C_VisitScene controller) {
         super(root);
@@ -72,6 +77,10 @@ public class V_VisitScene extends View implements IRunAfter {
         pane = new BorderPane();
         pane.setBackground(bg);
 
+        // Give the pane to the model's object pools
+        model.BulletPool.setParent(pane);
+        model.AsteroidPool.setParent(pane);
+
         ui = new BorderPane();
         ui.setPrefSize(pane.getWidth(), 300);
         ((BorderPane) pane).setBottom(ui);
@@ -87,20 +96,10 @@ public class V_VisitScene extends View implements IRunAfter {
         return backButton;
     }
 
-    public void movePlayer(Coord coord) {
+    public void movePlayer() {
         if (!playerEntered) return;
 
-
-        // Check position against screen bounds
-        double playerX = player.getPosition().x;
-        double playerY = player.getPosition().y;
-
-        // Move player within pane bounds
-        if (playerX < (pane.getWidth()) && playerX > 0)
-            player.moveX(coord.x);
-
-        if (playerY < pane.getHeight() && playerY > 0)
-            player.moveY(coord.y);
+        PlayerController.get().movePlayer(pane.getWidth(), pane.getHeight());
     }
 
     @Override
@@ -116,54 +115,93 @@ public class V_VisitScene extends View implements IRunAfter {
             }
         } else {
             if (mouseEvent != null) {
-                double diffX = mouseEvent.getX() - rect.getLayoutX();
-                double diffY = mouseEvent.getY() - rect.getLayoutY();
+                double diffX = mouseEvent.getX() - turret.getLayoutX();
+                double diffY = mouseEvent.getY() - turret.getLayoutY();
                 double angle = Math.toDegrees(Math.atan2(diffY, diffX));
-                rect.setRotate(angle);
+                turretRotation.setAngle(angle);
             }
         }
 
-        Iterator<GameObject> iterator = model.getGameObjects().iterator();
+        // Gameobject loop
+        Iterator<GameObject> gameObjectIterator = model.getGameObjects().iterator();
+        while(gameObjectIterator.hasNext()) {
+            // Update the current game object
+            GameObject currObject = gameObjectIterator.next();
+            currObject.update();
 
-        // Gameobjects in the list ( includes the player )
-//        for (GameObject go : model.getGameObjects()) {
-//            go.update();
-//
-//            // Check if BULLETs are out of bounds
+            if (currObject instanceof Bullet && isOutOfBounds(currObject)) {
+                gameObjectIterator.remove();
+                model.BulletPool.despawn((Bullet) currObject);
+                return;
+            }
 
-//        }
+            if (currObject instanceof Asteroid ) {
 
-        while(iterator.hasNext()) {
-            GameObject currObj = iterator.next();
-            currObj.update();
+                if (currObject.getBoundsInParent().intersects(player.getBoundsInParent())) {
+                    // Collide with player, take off 10 health
+                    gameObjectIterator.remove();
+                    model.AsteroidPool.despawn((Asteroid) currObject);
+                    M_PlayerData.getInstance().setHealth(M_PlayerData.getInstance().getHealth()-10);
 
-            // Janky ?
-            if (currObj instanceof Bullet) {
-                boolean remove = false;
-                if (currObj.getLayoutX() > pane.getWidth() + 100 || currObj.getLayoutX() < -100) {
-                    remove = true;
-                } else if (currObj.getLayoutY() > pane.getHeight() + 100 || currObj.getLayoutY() < -100) {
-                    remove = true;
+                    if (M_PlayerData.getInstance().getHealth() <= 0) {
+                        // Player dead
+                        System.out.println("player dead");
+                    }
                 }
 
-                if (remove) {
-                    pane.getChildren().remove(currObj);
-                    model.BulletPool.despawn((Bullet) currObj);
-                    iterator.remove();
+                // Iterate through every asteroid for every game bullet
+                Iterator<Bullet> bulletIterator = model.getGameObjectsByType(Bullet.class).iterator();
+                while(bulletIterator.hasNext()) {
+                    Bullet bullet = bulletIterator.next();
+
+                    // If asteroid collided with bullet, remove both
+                    if (currObject.getBoundsInParent().intersects(bullet.getBoundsInParent())) {
+                        System.out.println("Bullet collided with asteroid");
+                        gameObjectIterator.remove();
+                        bulletIterator.remove();
+
+                        model.AsteroidPool.despawn((Asteroid) currObject);
+                        model.BulletPool.despawn(bullet);
+                        return;
+                    }
+                }
+
+                // If the asteroid is out of the screen bounds and does not have grace
+                // time left. Remove it
+                if (isOutOfBounds(currObject) && !((Asteroid) currObject).hasGraceTime()) {
+                    gameObjectIterator.remove();
+                    model.AsteroidPool.despawn((Asteroid) currObject);
+                    return;
                 }
             }
         }
+        M_PlayerData playerData = M_PlayerData.getInstance();
+        healthLine.setEndX(100 + playerData.getHealth() * 2);
+    }
+
+    private boolean isOutOfBounds(GameObject object) {
+        boolean remove = false;
+        if (object.getLayoutX() > pane.getWidth() + 100 || object.getLayoutX() < -100) {
+            remove = true;
+        } else if (object.getLayoutY() > pane.getHeight() + 100 || object.getLayoutY() < -100) {
+            remove = true;
+        }
+
+        return remove;
     }
 
     public void createBullet(MouseEvent mouseEvent) {
         if (!playerEntered) return;
 
         Bullet newBullet = model.BulletPool.spawn();
-        newBullet.setOrigin(new Coord(rect.getLayoutX(), rect.getLayoutY()));
-        newBullet.setDirection(rect.getRotate());
 
-        pane.getChildren().add(newBullet);
-        model.addGameObject(newBullet);
+        // Create a bullet at the end of the gun using MATHS WOOO
+        newBullet.setOrigin(
+                new Coord(
+                        turret.getLayoutX() + (turret.getFitWidth() * Math.cos(Math.toRadians(turretRotation.getAngle())) ),
+                        turret.getLayoutY() + (turret.getFitWidth() * Math.sin(Math.toRadians(turretRotation.getAngle())) )
+                ));
+        newBullet.setDirection(turretRotation.getAngle());
     }
 
     @Override
@@ -172,6 +210,7 @@ public class V_VisitScene extends View implements IRunAfter {
         setupPlayerPosition();
         setupUI();
 
+        // Start all the animations that dont run on a timer
         model.getGameObjects().forEach(GameObject::startAnimation);
     }
 
@@ -184,6 +223,24 @@ public class V_VisitScene extends View implements IRunAfter {
     private void setupUI() {
         Pane uiPane = new Pane();
         uiPane.setPrefSize(ui.getWidth(), ui.getHeight());
+
+        M_PlayerData playerData = M_PlayerData.getInstance();
+
+        healthLine = new Line();
+        healthLine.setStrokeWidth(6);
+        healthLine.setStroke(Color.GREEN);
+        healthLine.setStartX(100);
+        healthLine.setEndX(100 + playerData.getHealth() * 2);
+        healthLine.setLayoutY(40);
+        healthLine.setLayoutX(40);
+
+        Line healthLineStatic = new Line();
+        healthLineStatic.setStrokeWidth(6);
+        healthLineStatic.setStroke(Color.RED);
+        healthLineStatic.setStartX(100);
+        healthLineStatic.setEndX(300);
+        healthLineStatic.setLayoutY(40);
+        healthLineStatic.setLayoutX(40);
 
         goLineUI = new Line();
         goLineUI.setStroke(Color.WHITE);
@@ -214,29 +271,31 @@ public class V_VisitScene extends View implements IRunAfter {
         playerRocketUI.setImage(player.getImg().getImage());
         playerRocketUI.setRotate(-90);
 
-        uiPane.getChildren().addAll(staticLine, goLineUI, planetImage, playerRocketUI);
+        uiPane.getChildren().addAll(staticLine, goLineUI, planetImage, playerRocketUI, healthLineStatic, healthLine);
 
         ui.setCenter(uiPane);
     }
 
     private void setupPlayerPosition() {
         // Add the player
-        player = M_PlayerData.getInstance().getPlayerGO();
-        player.setRotate(-90);
-        player.setGoHeight(4);
-        player.setGoWidth(2);
         player.setPosition(new Coord(pane.getWidth() + 250, pane.getHeight() / 2));
 
+        turret = new ImageView("/Resources/Min/TURRET.png");
+        turret.setFitHeight(30);
+        turret.setFitWidth(100);
+        // Bind this turrets properties to the players,
+        // essentially this means the turret copies the player layout with movement
+        turret.layoutYProperty().bind(player.layoutYProperty().add(turret.getFitWidth() + 15));
+        turret.layoutXProperty().bind(player.layoutXProperty().add(turret.getFitWidth() - 8));
 
-        rect = new Rectangle();
-        rect.setFill(Color.GREEN);
-        rect.setLayoutX(500);
-        rect.setLayoutY(500);
-        rect.setWidth(40);
-        rect.setHeight(40);
+        turretRotation = new Rotate();
+        turretRotation.setPivotX(0);
+        turretRotation.setPivotY(0 + turret.getFitHeight()/2);
+        turretRotation.setAngle(180);
+        turret.getTransforms().add(turretRotation);
 
-        pane.getChildren().addAll(player, rect);
-        rect.toFront();
+        pane.getChildren().addAll(player, turret);
+        turret.toFront();
     }
 
     private void setupStars() {

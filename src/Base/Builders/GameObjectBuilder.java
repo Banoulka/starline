@@ -1,7 +1,7 @@
 package Base.Builders;
 
 import Abstracts.GameObject;
-import Base.Coord;
+import Base.Utility.Coord;
 
 public abstract class GameObjectBuilder
         <O extends GameObject, SELF extends GameObjectBuilder<O, SELF>> {

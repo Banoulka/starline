@@ -1,6 +1,6 @@
 package Base.Builders;
 
-import Base.Coord;
+import Base.Utility.Coord;
 import Base.GameObjects.Bullet;
 import Base.Interfaces.IGameObjectBuilderEmpty;
 

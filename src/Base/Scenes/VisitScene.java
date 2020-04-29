@@ -2,8 +2,9 @@ package Base.Scenes;
 
 import Abstracts.CelestialBody;
 import Base.Builders.PlanetBuilder;
-import Base.Config;
-import Base.Coord;
+import Base.PlanetData.UranusData;
+import Base.Utility.Config;
+import Base.Utility.Coord;
 import Base.Interfaces.IRunAfter;
 import MVCs.VisitScene.C_VisitScene;
 import javafx.scene.layout.BorderPane;
@@ -25,6 +26,7 @@ public class VisitScene extends BorderPane implements IRunAfter {
                     .gravityPull(4)
                     .sizeSquare(6)
                     .position(new Coord(3200, 460))
+                    .planetData(new UranusData())
                     .build();
         }
 

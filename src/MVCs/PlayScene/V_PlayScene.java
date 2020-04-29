@@ -3,7 +3,7 @@ package MVCs.PlayScene;
 import Abstracts.CelestialBody;
 import Abstracts.GameObject;
 import Abstracts.View;
-import Base.Config;
+import Base.Utility.Config;
 import Base.Interfaces.Actions.IVisitable;
 import Base.StarFactory;
 import MVCs.PlayerData.M_PlayerData;
@@ -77,7 +77,6 @@ public class V_PlayScene extends View {
     public void runAfter() {
         setupStars();
         setupGameObjectLayer();
-        // Providing really laggy game
         setupCanvas();
     }
 
@@ -156,6 +155,7 @@ public class V_PlayScene extends View {
             Button actionButton = new Button();
             actionButton.setText("View");
             vBox.getChildren().add(actionButton);
+            actionButton.setOnMouseReleased(mouseEvent1 -> controller.view(body));
         }
 
 

@@ -2,9 +2,6 @@ package MVCs.PlayerData;
 
 import Abstracts.CelestialBody;
 import Abstracts.Model;
-import Base.Builders.PlayerBuilder;
-import Base.Coord;
-import Base.GameObjects.PlayerGO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,12 +11,10 @@ public class M_PlayerData extends Model {
 
     // Player stats
     private String playerName = "TestPlayer";
-    private int playerMoney = 0;
+    private double playerMoney = 10;
     private CelestialBody currPlanet = null;
-    private int fuelLevel = 1;
-
-    // Game Object
-    private PlayerGO playerGO;
+    private int fuelLevel = 3;
+    private int health = 100;
 
     // Body Info
     private List<CelestialBody> knownBodies;
@@ -29,20 +24,14 @@ public class M_PlayerData extends Model {
 
     private M_PlayerData() {
         knownBodies = new ArrayList<>();
-
-        PlayerBuilder playerBuilder = new PlayerBuilder();
-
-        // Build the new player object
-        playerGO = playerBuilder
-                .sizeRect(0.5, 1)
-                .position(new Coord(0, 0))
-                .image("rocket")
-                .playerDataReference(self)
-                .build();
     }
 
-    public PlayerGO getPlayerGO() {
-        return playerGO;
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
     }
 
     public CelestialBody getCurrPlanet() {
@@ -84,7 +73,7 @@ public class M_PlayerData extends Model {
        this.playerName = playerName;
     }
 
-    public int getPlayerMoney() {
+    public double getPlayerMoney() {
         return playerMoney;
     }
 

@@ -1,6 +1,7 @@
 package MVCs.PlayerData;
 
 import Abstracts.Controller;
+import Base.Utility.Config;
 import javafx.scene.layout.Pane;
 
 public class C_PlayerData extends Controller {
@@ -13,6 +14,14 @@ public class C_PlayerData extends Controller {
         model = M_PlayerData.getInstance();
         view = new V_PlayerData(root);
         view.updateView();
+
+        // Set action listeners
+        view.getBtn_showUpgrades().setOnMouseClicked(mouseEvent -> {
+            view.getBtn_showUpgrades().arm();
+
+            // Show the upgrades screen?
+            view.showUpgradeScreen();
+        });
     }
 
     @Override

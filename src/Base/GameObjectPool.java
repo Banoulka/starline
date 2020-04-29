@@ -2,6 +2,7 @@ package Base;
 
 import Abstracts.GameObject;
 import Base.Interfaces.IGameObjectBuilderEmpty;
+import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +18,22 @@ public class GameObjectPool <T extends GameObject> {
     // Should the pool auto-create objects to meet higher demands?
     protected boolean createOnEmpty = false;
 
+    // The pane to remove the object from
+    protected Pane parent;
+
+    // The game object list to remove from
+    protected List<GameObject> modelGameObjects;
+
     public GameObjectPool() {
         gameObjectList = new ArrayList<T>();
+    }
+
+    public void setParent(Pane parent) {
+        this.parent = parent;
+    }
+
+    public void setModelGameObjects(List<GameObject> modelGameObjects) {
+        this.modelGameObjects = modelGameObjects;
     }
 
     public GameObjectPool<T> setGameObjectBuilder(IGameObjectBuilderEmpty<T> gameObjectBuilder) {
@@ -29,8 +44,9 @@ public class GameObjectPool <T extends GameObject> {
 
     public GameObjectPool<T> createObjects(int objects) {
         // Start the object pool off with X number of objects
-        for (int i = 0; i < objects; i++)
+        for (int i = 0; i < objects; i++) {
             gameObjectList.add(gameObjectBuilder.buildEmpty());
+        }
         return this;
     }
 
@@ -40,24 +56,33 @@ public class GameObjectPool <T extends GameObject> {
     }
 
     public T spawn() {
+        T objectToReturn;
         // Get an object from the pool and remove it from the pool
         // If the pool is empty and createOnEmpty is false... return null
         // otherwise return just a new object
         if (!gameObjectList.isEmpty()) {
             T gameObject = gameObjectList.get(0);
             gameObjectList.remove(gameObject);
-            return gameObject;
+            objectToReturn = gameObject;
         }
         else if (createOnEmpty)
-            return gameObjectBuilder.buildEmpty();
-        else
-            return null;
+            objectToReturn = gameObjectBuilder.buildEmpty();
+        else return null;
+
+        parent.getChildren().add(objectToReturn);
+        modelGameObjects.add(objectToReturn);
+        objectToReturn.startAnimation();
+        return objectToReturn;
     }
 
     public void despawn(T gameObject) {
         // Add the despawned object back to the pool with
         // its values reset
         gameObjectList.add(gameObjectBuilder.resetValues(gameObject));
+
+        // Remove the object from the game object list
+        // and the parent
+        parent.getChildren().remove(gameObject);
     }
 
 

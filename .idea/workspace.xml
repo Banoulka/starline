@@ -1,52 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Starline:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/MVCs/ViewScene/V_ViewScene.java" line="141" mnemonic="2" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="2ffe305a-30ac-4b7b-9184-113e2d77c381" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/User.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Abstracts/Projectile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Base/Builders/BulletBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Base/GameObjectPool.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Base/GameObjects/Bullet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Base/Interfaces/IGameObjectBuilderEmpty.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Abstracts/PlanetData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Base/Builders/AsteroidBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Base/Controls/PlayerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Base/GameObjects/rOcks/Asteroid.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Base/PlanetData/EarthData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Base/PlanetData/JupiterData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Base/PlanetData/MarsData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Base/PlanetData/MercuryData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Base/PlanetData/MoonData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Base/PlanetData/NeptuneData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Base/PlanetData/SaturnData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Base/PlanetData/SunData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Base/PlanetData/UranusData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Base/PlanetData/VenusData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Base/Scenes/ViewScene.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Base/Utility/RandomRange.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MVCs/ViewScene/C_ViewScene.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MVCs/ViewScene/M_ViewScene.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MVCs/ViewScene/V_ViewScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Starline/Abstracts/CelestialBody.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/Abstracts/CelestialBody.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Starline/Abstracts/ExtendableScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/Abstracts/ExtendableScene.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Starline/Abstracts/GameObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/Abstracts/GameObject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Starline/Base/BodyInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Starline/Base/Builders/MoonBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/Base/Builders/MoonBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Starline/Base/Builders/PlanetBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/Base/Builders/PlanetBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Starline/Abstracts/Projectile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/Abstracts/Projectile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Starline/Base/Builders/BulletBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/Base/Builders/BulletBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Starline/Base/Builders/CelestialBodyBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/Base/Builders/CelestialBodyBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Starline/Base/Builders/GameObjectBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/Base/Builders/GameObjectBuilder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Starline/Base/Builders/PlayerBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/Base/Builders/PlayerBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Starline/Base/Builders/StarBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/Base/Builders/StarBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Starline/Base/Misc/PlayerGO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Starline/Base/Planets/Moon.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Starline/Base/Planets/Planet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Starline/Base/Planets/Star.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Starline/Base/Config.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Starline/Base/Coord.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Starline/Base/GameObjectPool.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/Base/GameObjectPool.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Starline/Base/GameObjects/Planets/Moon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/Base/GameObjects/Planets/Moon.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Starline/Base/GameObjects/Planets/Planet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/Base/GameObjects/Planets/Planet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Starline/Base/GameObjects/PlayerGO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/Base/GameObjects/PlayerGO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Starline/Base/SceneManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/Base/SceneManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Starline/Base/Scenes/VisitScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/Base/Scenes/VisitScene.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Starline/Base/Star.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/Base/Star.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Starline/Base/StarFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/Base/StarFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Starline/Base/StarOne.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/Base/StarOne.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Starline/Base/StarTwo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/Base/StarTwo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Starline/Base/Utils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Starline/META-INF/Starline.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Starline/MVCs/PlayScene/C_PlayScene$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/MVCs/PlayScene/C_PlayScene$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Starline/MVCs/PlayScene/C_PlayScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/MVCs/PlayScene/C_PlayScene.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Starline/MVCs/PlayScene/M_PlayScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/MVCs/PlayScene/M_PlayScene.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Starline/MVCs/PlayScene/V_PlayScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/MVCs/PlayScene/V_PlayScene.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Starline/MVCs/PlayerData/C_PlayerData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/MVCs/PlayerData/C_PlayerData.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Starline/MVCs/PlayerData/M_PlayerData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/MVCs/PlayerData/M_PlayerData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Starline/MVCs/PlayerData/V_PlayerData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/MVCs/PlayerData/V_PlayerData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Starline/MVCs/StartScene/V_StartScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/MVCs/StartScene/V_StartScene.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Starline/MVCs/VisitScene/C_VisitScene$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/MVCs/VisitScene/C_VisitScene$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Starline/MVCs/VisitScene/C_VisitScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/MVCs/VisitScene/C_VisitScene.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Starline/MVCs/VisitScene/M_VisitScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/MVCs/VisitScene/M_VisitScene.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Starline/MVCs/VisitScene/V_VisitScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/MVCs/VisitScene/V_VisitScene.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Starline/Starline.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/Starline.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Starline/Styles/button-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/Styles/button-styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Starline/Styles/root-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Starline/Styles/root-styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Abstracts/CelestialBody.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Abstracts/CelestialBody.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Abstracts/ExtendableScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Abstracts/ExtendableScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Abstracts/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Abstracts/GameObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Base/BodyInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Base/Builders/MoonBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Base/Builders/MoonBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Base/Builders/PlanetBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Base/Builders/PlanetBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Abstracts/Projectile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Abstracts/Projectile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Base/Builders/BulletBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Base/Builders/BulletBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Base/Builders/CelestialBodyBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Base/Builders/CelestialBodyBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Base/Builders/GameObjectBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Base/Builders/GameObjectBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Base/Builders/PlayerBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Base/Builders/PlayerBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Base/Builders/StarBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Base/Builders/StarBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Base/Misc/PlayerGO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Base/GameObjects/PlayerGO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Base/Planets/Moon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Base/GameObjects/Planets/Moon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Base/Planets/Planet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Base/GameObjects/Planets/Planet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Base/Planets/Star.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Base/GameObjects/Planets/Star.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Base/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Base/Utility/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Base/Coord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Base/Utility/Coord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Base/GameObjectPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Base/GameObjectPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Base/GameObjects/Planets/Moon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Base/GameObjects/Planets/Moon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Base/GameObjects/Planets/Planet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Base/GameObjects/Planets/Planet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Base/GameObjects/PlayerGO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Base/GameObjects/PlayerGO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Base/SceneManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Base/SceneManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Base/Scenes/VisitScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Base/Scenes/VisitScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Base/StarFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Base/StarFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Base/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Base/Utility/Utils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MVCs/PlayScene/C_PlayScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MVCs/PlayScene/C_PlayScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MVCs/PlayScene/M_PlayScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MVCs/PlayScene/M_PlayScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MVCs/PlayScene/V_PlayScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MVCs/PlayScene/V_PlayScene.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MVCs/PlayerData/C_PlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MVCs/PlayerData/C_PlayerData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MVCs/PlayerData/M_PlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MVCs/PlayerData/M_PlayerData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MVCs/PlayerData/V_PlayerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MVCs/PlayerData/V_PlayerData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MVCs/StartScene/V_StartScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MVCs/StartScene/V_StartScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MVCs/VisitScene/C_VisitScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MVCs/VisitScene/C_VisitScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MVCs/VisitScene/M_VisitScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MVCs/VisitScene/M_VisitScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MVCs/VisitScene/V_VisitScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MVCs/VisitScene/V_VisitScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Starline.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Starline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Styles/button-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Styles/button-styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Styles/root-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Styles/root-styles.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -57,47 +110,83 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MVCs/VisitScene/V_VisitScene.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="621">
-              <caret line="174" selection-start-line="174" selection-end-line="174" />
+            <state relative-caret-position="85">
+              <caret line="152" column="46" selection-start-line="152" selection-start-column="46" selection-end-line="152" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Starline.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="690">
+              <caret line="30" column="1" lean-forward="true" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MVCs/VisitScene/M_VisitScene.java">
+        <entry file="file://$PROJECT_DIR$/src/Styles/root-styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="27" column="37" lean-forward="true" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
+            <state relative-caret-position="115">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Base/GameObjectPool.java">
+        <entry file="file://$PROJECT_DIR$/src/MVCs/PlayScene/V_PlayScene.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="572">
-              <caret line="26" column="20" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
+            <state relative-caret-position="3634">
+              <caret line="158" column="9" selection-start-line="158" selection-start-column="9" selection-end-line="158" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Base/Interfaces/IGameObjectBuilderEmpty.java">
+        <entry file="file://$PROJECT_DIR$/src/Abstracts/CelestialBody.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+            <state relative-caret-position="1702">
+              <caret line="74" column="5" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MVCs/VisitScene/C_VisitScene.java">
+        <entry file="file://$PROJECT_DIR$/src/Base/Utility/Coord.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="109" lean-forward="true" selection-start-line="109" selection-end-line="109" />
+            <state relative-caret-position="483">
+              <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MVCs/PlayScene/C_PlayScene.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3289">
+              <caret line="143" column="9" selection-start-line="143" selection-start-column="9" selection-end-line="143" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MVCs/ViewScene/V_ViewScene.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MVCs/ViewScene/M_ViewScene.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="322">
+              <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -107,8 +196,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -123,6 +212,13 @@
       <find>M_PlayerData</find>
       <find>System.</find>
       <find>in</find>
+      <find>Despawn</find>
+      <find>cre</find>
+      <find>moon</find>
+      <find>set</find>
+      <find>player</find>
+      <find>getCurrPl</find>
+      <find>getCurrPlanet</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -138,57 +234,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Base/Builders/CelestialBodyBuilder.java" />
-        <option value="$PROJECT_DIR$/src/Base/Builders/StarBuilder.java" />
-        <option value="$PROJECT_DIR$/src/Base/Builders/GameObjectBuilder.java" />
-        <option value="$PROJECT_DIR$/src/Base/Builders/MoonBuilder.java" />
-        <option value="$PROJECT_DIR$/src/Base/CanvasLayer.java" />
-        <option value="$PROJECT_DIR$/src/Base/Interfaces/Visitor.java" />
-        <option value="$PROJECT_DIR$/src/Base/Interfaces/EventVisitor.java" />
-        <option value="$PROJECT_DIR$/src/Base/Interfaces/Visitors/GameObjectVisitor.java" />
-        <option value="$PROJECT_DIR$/src/Base/Interfaces/Visitors/Visitor.java" />
-        <option value="$PROJECT_DIR$/src/Base/Interfaces/Visitors/IGameObjectVisitor.java" />
-        <option value="$PROJECT_DIR$/src/Base/Interfaces/Visitors/IStarVisitor.java" />
-        <option value="$PROJECT_DIR$/src/Base/Interfaces/Visitors/IVisitor.java" />
-        <option value="$PROJECT_DIR$/src/Base/Interfaces/Visitors/IPlanetVisitor.java" />
-        <option value="$PROJECT_DIR$/src/Base/Interfaces/Visitors/IMoonVisitor.java" />
-        <option value="$PROJECT_DIR$/src/Base/Interfaces/Visitors/ICelestialBodyVisitor.java" />
-        <option value="$PROJECT_DIR$/src/Base/Misc/GameObjectVisitor.java" />
-        <option value="$PROJECT_DIR$/src/Base/Builders/PlanetBuilder.java" />
-        <option value="$PROJECT_DIR$/src/Abstracts/CelestialBody.java" />
-        <option value="$PROJECT_DIR$/src/Base/Planets/Star.java" />
-        <option value="$PROJECT_DIR$/src/Base/Planets/Planet.java" />
-        <option value="$PROJECT_DIR$/src/MVCs/PlayScene/M_PlayScene.java" />
-        <option value="$PROJECT_DIR$/src/Base/Scenes/PlayScene.java" />
-        <option value="$PROJECT_DIR$/src/MVCs/PlayerData/Player.java" />
-        <option value="$PROJECT_DIR$/src/MVCs/PlayerData/PlayerGO.java" />
-        <option value="$PROJECT_DIR$/src/Base/Misc/PlayerGO.java" />
-        <option value="$PROJECT_DIR$/src/Base/Builders/PlayerBuilder.java" />
-        <option value="$PROJECT_DIR$/src/Base/Planets/Moon.java" />
-        <option value="$PROJECT_DIR$/src/Base/Config.java" />
-        <option value="$PROJECT_DIR$/src/MVCs/PlayScene/C_PlayScene.java" />
-        <option value="$PROJECT_DIR$/src/MVCs/PlayerData/M_PlayerData.java" />
-        <option value="$PROJECT_DIR$/src/MVCs/PlayScene/V_PlayScene.java" />
-        <option value="$PROJECT_DIR$/src/Base/Star.java" />
-        <option value="$PROJECT_DIR$/src/Base/StarFactory.java" />
-        <option value="$PROJECT_DIR$/src/Base/SceneManager.java" />
-        <option value="$PROJECT_DIR$/src/Starline.java" />
-        <option value="$PROJECT_DIR$/src/Base/Scenes/VisitScene.java" />
-        <option value="$PROJECT_DIR$/src/Abstracts/GameObject.java" />
-        <option value="$PROJECT_DIR$/src/MVCs/VisitScene/C_VisitScene.java" />
-        <option value="$PROJECT_DIR$/src/Base/GameObjects/Bullet.java" />
-        <option value="$PROJECT_DIR$/src/Base/Interfaces/Builder.java" />
-        <option value="$PROJECT_DIR$/src/Base/Interfaces/GameObjectBuilder.java" />
-        <option value="$PROJECT_DIR$/src/Base/Builders/IBulletBuilder.java" />
-        <option value="$PROJECT_DIR$/src/Base/Interfaces/IPoolableGameObject.java" />
-        <option value="$PROJECT_DIR$/src/Base/Interfaces/IGameObjectBuilder.java" />
-        <option value="$PROJECT_DIR$/src/Base/Interfaces/IGameObjectBuilderEmpty.java" />
-        <option value="$PROJECT_DIR$/src/Abstracts/GameObjectPool.java" />
+        <option value="$PROJECT_DIR$/src/Base/GameObjects/Asteroid.java" />
+        <option value="$PROJECT_DIR$/src/Base/GameObjects/Rocks/Asteroid.java" />
+        <option value="$PROJECT_DIR$/src/Base/Utility/RandomRange.java" />
         <option value="$PROJECT_DIR$/src/Abstracts/Projectile.java" />
-        <option value="$PROJECT_DIR$/src/Base/Builders/BulletBuilder.java" />
-        <option value="$PROJECT_DIR$/src/Base/GameObjectPool.java" />
+        <option value="$PROJECT_DIR$/src/Base/Builders/AsteroidFactory.java" />
+        <option value="$PROJECT_DIR$/src/Base/GameObjects/rOcks/Asteroid.java" />
+        <option value="$PROJECT_DIR$/src/Base/Builders/AsteroidBuilder.java" />
+        <option value="$PROJECT_DIR$/src/Base/GameObjects/PlayerGO.java" />
+        <option value="$PROJECT_DIR$/src/Base/GameObjects/Planets/Moon.java" />
+        <option value="$PROJECT_DIR$/src/MVCs/StartScene/V_StartScene.java" />
+        <option value="$PROJECT_DIR$/src/MVCs/StartScene/C_StartScene.java" />
+        <option value="$PROJECT_DIR$/src/Base/StarFactory.java" />
+        <option value="$PROJECT_DIR$/src/Base/GameObjects/Planets/Planet.java" />
+        <option value="$PROJECT_DIR$/src/Abstracts/GameObject.java" />
+        <option value="$PROJECT_DIR$/src/Base/Builders/PlayerBuilder.java" />
         <option value="$PROJECT_DIR$/src/MVCs/VisitScene/M_VisitScene.java" />
+        <option value="$PROJECT_DIR$/src/Base/Controls/PlayerController.java" />
+        <option value="$PROJECT_DIR$/src/Base/GameObjectPool.java" />
+        <option value="$PROJECT_DIR$/src/MVCs/VisitScene/C_VisitScene.java" />
+        <option value="$PROJECT_DIR$/src/MVCs/PlayerData/C_PlayerData.java" />
+        <option value="$PROJECT_DIR$/src/MVCs/PlayScene/V_PlayScene.java" />
+        <option value="$PROJECT_DIR$/src/MVCs/PlayerData/V_PlayerData.java" />
+        <option value="$PROJECT_DIR$/src/Styles/button-styles.css" />
+        <option value="$PROJECT_DIR$/src/Base/Builders/CelestialBodyBuilder.java" />
+        <option value="$PROJECT_DIR$/src/Base/PlanetData/SunData.java" />
+        <option value="$PROJECT_DIR$/src/Base/PlanetData/MercuryData.java" />
+        <option value="$PROJECT_DIR$/src/Base/PlanetData/VenusData.java" />
+        <option value="$PROJECT_DIR$/src/Base/PlanetData/EarthData.java" />
+        <option value="$PROJECT_DIR$/src/Base/PlanetData/MarsAge.java" />
+        <option value="$PROJECT_DIR$/src/Base/Utility/Utils.java" />
+        <option value="$PROJECT_DIR$/src/Abstracts/PlanetData.java" />
+        <option value="$PROJECT_DIR$/src/Base/PlanetData/MarsData.java" />
+        <option value="$PROJECT_DIR$/src/Base/PlanetData/JupiterData.java" />
+        <option value="$PROJECT_DIR$/src/Base/PlanetData/SaturnData.java" />
+        <option value="$PROJECT_DIR$/src/Base/PlanetData/NeptuneData.java" />
+        <option value="$PROJECT_DIR$/src/Base/PlanetData/UranusData.java" />
+        <option value="$PROJECT_DIR$/src/Base/PlanetData/MoonData.java" />
+        <option value="$PROJECT_DIR$/src/MVCs/PlayScene/M_PlayScene.java" />
+        <option value="$PROJECT_DIR$/src/Base/Scenes/VisitScene.java" />
+        <option value="$PROJECT_DIR$/src/Base/Scenes/ViewScene.java" />
+        <option value="$PROJECT_DIR$/src/Styles/root-styles.css" />
+        <option value="$PROJECT_DIR$/src/MVCs/ViewScene/V_ViewScene.java" />
+        <option value="$PROJECT_DIR$/src/MVCs/ViewScene/C_ViewScene.java" />
+        <option value="$PROJECT_DIR$/src/MVCs/PlayScene/C_PlayScene.java" />
+        <option value="$PROJECT_DIR$/src/Base/Utility/Coord.java" />
+        <option value="$PROJECT_DIR$/src/Abstracts/CelestialBody.java" />
+        <option value="$PROJECT_DIR$/src/MVCs/ViewScene/M_ViewScene.java" />
+        <option value="$PROJECT_DIR$/src/MVCs/PlayerData/M_PlayerData.java" />
         <option value="$PROJECT_DIR$/src/MVCs/VisitScene/V_VisitScene.java" />
+        <option value="$PROJECT_DIR$/src/Starline.java" />
+        <option value="$PROJECT_DIR$/src/Base/Utility/Config.java" />
       </list>
     </option>
   </component>
@@ -202,11 +298,10 @@
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
+      <flattenPackages ProjectPane="false" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -243,6 +338,13 @@
               <item name="Starline" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Base" type="462c0819:PsiDirectoryNode" />
+              <item name="Controls" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Starline" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Starline" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Base" type="462c0819:PsiDirectoryNode" />
               <item name="GameObjects" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -265,14 +367,6 @@
               <item name="Starline" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Base" type="462c0819:PsiDirectoryNode" />
-              <item name="Interfaces" type="462c0819:PsiDirectoryNode" />
-              <item name="Actions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Starline" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Starline" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Base" type="462c0819:PsiDirectoryNode" />
               <item name="Scenes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -280,7 +374,7 @@
               <item name="Starline" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Base" type="462c0819:PsiDirectoryNode" />
-              <item name="StarFactory.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+              <item name="Utility" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Starline" type="b2602c69:ProjectViewProjectNode" />
@@ -314,13 +408,14 @@
               <item name="Starline" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="MVCs" type="462c0819:PsiDirectoryNode" />
-              <item name="VisitScene" type="462c0819:PsiDirectoryNode" />
+              <item name="ViewScene" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Starline" type="b2602c69:ProjectViewProjectNode" />
               <item name="Starline" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="MVCs" type="462c0819:PsiDirectoryNode" />
+              <item name="VisitScene" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Starline" type="b2602c69:ProjectViewProjectNode" />
@@ -332,16 +427,20 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1587579193541" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1588182123947" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="Arma Plugin Settings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -395,17 +494,27 @@
       <workItem from="1587396562741" duration="20529000" />
       <workItem from="1587460771724" duration="15102000" />
       <workItem from="1587550296088" duration="14664000" />
+      <workItem from="1587637248553" duration="10012000" />
+      <workItem from="1587728371719" duration="6901000" />
+      <workItem from="1587803288401" duration="3820000" />
+      <workItem from="1587897754056" duration="846000" />
+      <workItem from="1587913403383" duration="127000" />
+      <workItem from="1587913581785" duration="5107000" />
+      <workItem from="1587936809344" duration="1593000" />
+      <workItem from="1587973619940" duration="9606000" />
+      <workItem from="1588148489118" duration="9516000" />
+      <workItem from="1588181503749" duration="622000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78221000" />
+    <option name="totallyTimeSpent" value="126371000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2810016" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21701112" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -413,18 +522,19 @@
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32969603" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49920508" weight="0.14107561" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49960256" visible="true" weight="0.25798908" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32939324" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49920508" weight="0.18282112" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49960256" weight="0.2600473" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.23616524" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.23561859" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5007949" side_tool="true" weight="0.21122369" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.2548714" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.25453112" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Version Control" order="12" />
+      <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.32939324" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -457,276 +567,360 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Base/Interfaces/Objects/IStar.java" />
-    <entry file="file://$PROJECT_DIR$/src/Base/Interfaces/Builders/IPlanetBuilder.java" />
-    <entry file="file://$PROJECT_DIR$/src/Base/Interfaces/Builders/IStarBuilder.java" />
-    <entry file="file://$PROJECT_DIR$/src/Base/Interfaces/Builders/ICelestialBodyBuilder.java" />
-    <entry file="file://$PROJECT_DIR$/src/Base/Interfaces/Builders/IGameObjectBuilder.java" />
-    <entry file="file://$PROJECT_DIR$/src/Base/Builders/StarBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Base/Builders/MoonBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Base/CanvasLayer.java" />
-    <entry file="file://$PROJECT_DIR$/src/Base/Interfaces/Visitors/IGameObjectVisitor.java" />
-    <entry file="file://$PROJECT_DIR$/src/Base/Interfaces/Visitors/IMoonVisitor.java" />
-    <entry file="file://$PROJECT_DIR$/src/Base/Misc/GameObjectVisitor.java" />
-    <entry file="file://$PROJECT_DIR$/src/Base/Interfaces/Visitors/IStarVisitor.java" />
-    <entry file="file://$PROJECT_DIR$/src/Base/Interfaces/Visitors/IPlanetVisitor.java" />
-    <entry file="file://$PROJECT_DIR$/src/Base/Interfaces/Visitors/ICelestialBodyVisitor.java" />
-    <entry file="file://$PROJECT_DIR$/src/Base/Interfaces/Visitors/IVisitor.java" />
-    <entry file="file://$PROJECT_DIR$/src/Base/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Base/Scenes/PlayScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Base/Builders/PlayerBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Base/Star.java" />
-    <entry file="file://$PROJECT_DIR$/src/MVCs/PlayScene/V_PlayScene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="113" selection-start-line="113" selection-end-line="133" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Documents/javafx-sdk-14/lib/javafx.graphics.jar!/javafx/scene/shape/Rectangle.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Base/SceneManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="58" column="27" selection-start-line="58" selection-start-column="27" selection-end-line="58" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Base/Builders/CelestialBodyBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Base/GameObjects/Planets/Planet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="52" column="34" lean-forward="true" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
+        <state relative-caret-position="408">
+          <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Base/GameObjects/Planets/Moon.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="43" column="47" lean-forward="true" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Base/GameObjects/PlayerGO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Base/Builders/GameObjectBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="36" lean-forward="true" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Abstracts/CelestialBody.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MVCs/PlayerData/M_PlayerData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="24" lean-forward="true" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Documents/javafx-sdk-14/lib/javafx.base.jar!/javafx/util/Duration.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Documents/javafx-sdk-14/lib/javafx.graphics.jar!/javafx/scene/Node.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="379" column="40" selection-start-line="379" selection-start-column="40" selection-end-line="379" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Base/EventManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Base/Config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="45" lean-forward="true" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Base/Builders/PlanetBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Base/Scenes/VisitScene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="44" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Starline.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/MVCs/PlayScene/M_PlayScene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="917">
-          <caret line="66" column="37" selection-start-line="66" selection-start-column="37" selection-end-line="66" selection-end-column="37" />
+        <state relative-caret-position="1265">
+          <caret line="55" column="33" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Base/GameObjects/Planets/Star.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="19" column="59" lean-forward="true" selection-start-line="19" selection-start-column="59" selection-end-line="19" selection-end-column="59" />
+        <state relative-caret-position="966">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MVCs/PlayScene/C_PlayScene.java">
+    <entry file="file://$PROJECT_DIR$/src/MVCs/StartScene/C_StartScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1327">
-          <caret line="142" column="44" lean-forward="true" selection-start-line="142" selection-start-column="44" selection-end-line="142" selection-end-column="44" />
+        <state relative-caret-position="805">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MVCs/StartScene/V_StartScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1794">
+          <caret line="78" column="46" selection-start-line="78" selection-start-column="46" selection-end-line="78" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Base/SceneManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="943">
+          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Base/GameObjects/Planets/Planet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="989">
+          <caret line="43" column="35" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Abstracts/GameObject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="620">
-          <caret line="43" column="44" selection-start-line="43" selection-start-column="44" selection-end-line="43" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Base/Interfaces/IPoolableGameObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Base/GameObjects/Bullet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Abstracts/Projectile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Base/Builders/BulletBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="811">
-          <caret line="74" column="28" selection-start-line="74" selection-start-column="28" selection-end-line="74" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Base/Interfaces/Actions/IVisitable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="455">
+          <caret line="76" column="5" lean-forward="true" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Base/StarFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="53" column="61" lean-forward="true" selection-start-line="53" selection-start-column="61" selection-end-line="53" selection-end-column="61" />
+        <state relative-caret-position="364">
+          <caret line="93" column="50" selection-start-line="93" selection-start-column="50" selection-end-line="93" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Base/Controls/PlayerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Base/GameObjectPool.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="26" column="20" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
+        <state relative-caret-position="2016">
+          <caret line="84" column="48" lean-forward="true" selection-start-line="84" selection-start-column="48" selection-end-line="84" selection-end-column="48" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Base/Interfaces/IGameObjectBuilderEmpty.java">
+    <entry file="file://$PROJECT_DIR$/src/Base/Builders/PlayerBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="253">
+          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Base/Builders/AsteroidBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="33" column="7" lean-forward="true" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MVCs/PlayerData/V_PlayerData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1045">
+          <caret line="94" selection-start-line="94" selection-end-line="94" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MVCs/VisitScene/C_VisitScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="109" lean-forward="true" selection-start-line="109" selection-end-line="109" />
+        <state relative-caret-position="870">
+          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Documents/javafx-sdk-14/lib/javafx.graphics.jar!/javafx/scene/Node.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="323" column="44" selection-start-line="323" selection-start-column="44" selection-end-line="323" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Styles/button-styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="26" column="1" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Documents/javafx-sdk-14/lib/javafx.graphics.jar!/javafx/scene/layout/VBox.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="27" column="11" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Base/Builders/GameObjectBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="34" lean-forward="true" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Base/Builders/PlanetBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Base/PlanetData/SunData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="8" lean-forward="true" selection-start-line="7" selection-start-column="8" selection-end-line="9" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Base/PlanetData/VenusData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Base/PlanetData/MercuryData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="9" column="33" lean-forward="true" selection-start-line="7" selection-start-column="8" selection-end-line="9" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Base/PlanetData/EarthData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="7" column="36" lean-forward="true" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Base/Utility/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Abstracts/PlanetData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Base/PlanetData/JupiterData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="8" column="36" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Base/PlanetData/SaturnData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="8" column="41" lean-forward="true" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Base/PlanetData/NeptuneData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="8" column="30" lean-forward="true" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Base/PlanetData/MarsData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Base/PlanetData/MoonData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Base/PlanetData/UranusData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="5" lean-forward="true" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MVCs/VisitScene/M_VisitScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="27" column="37" lean-forward="true" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
+        <state relative-caret-position="-702">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Base/Scenes/VisitScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="503">
+          <caret line="23" column="33" lean-forward="true" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Base/Builders/CelestialBodyBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="667">
+          <caret line="29" column="22" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Base/Scenes/ViewScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="17" column="42" lean-forward="true" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MVCs/ViewScene/C_ViewScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MVCs/PlayerData/C_PlayerData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="32" lean-forward="true" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MVCs/PlayScene/M_PlayScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="114" column="26" lean-forward="true" selection-start-line="114" selection-start-column="26" selection-end-line="114" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MVCs/PlayerData/M_PlayerData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Styles/root-styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MVCs/PlayScene/V_PlayScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3634">
+          <caret line="158" column="9" selection-start-line="158" selection-start-column="9" selection-end-line="158" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Abstracts/CelestialBody.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1702">
+          <caret line="74" column="5" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Base/Utility/Coord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MVCs/PlayScene/C_PlayScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3289">
+          <caret line="143" column="9" selection-start-line="143" selection-start-column="9" selection-end-line="143" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MVCs/ViewScene/V_ViewScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MVCs/ViewScene/M_ViewScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MVCs/VisitScene/V_VisitScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="174" selection-start-line="174" selection-end-line="174" />
+        <state relative-caret-position="85">
+          <caret line="152" column="46" selection-start-line="152" selection-start-column="46" selection-end-line="152" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Base/Scenes/StartScene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Base/Utility/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="45" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Starline.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="30" column="1" lean-forward="true" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -736,6 +930,7 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
+          <last-edited>Starline:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -796,6 +991,17 @@
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
           <last-edited>lib</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
           <splitter-proportions>
             <option name="proportions">
               <list>

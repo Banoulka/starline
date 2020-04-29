@@ -95,13 +95,7 @@ public class V_StartScene extends View {
     }
 
     public void toggleError(Boolean toggle) {
-        if(toggle) {
-            // Display error
-            errorLabel.setVisible(true);
-        } else {
-            // Remove error
-            errorLabel.setVisible(false);
-        }
+        errorLabel.setVisible(toggle);
     }
 
     @Override

@@ -1,16 +1,18 @@
 package Abstracts;
 
 import Base.Interfaces.Actions.IClickable;
+import Base.Utility.Coord;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.input.MouseEvent;
 
-public abstract class CelestialBody extends GameObject implements IClickable {
+public abstract class CelestialBody extends GameObject implements IClickable, Cloneable {
 
     protected String name;
     protected double gravityPull;
     protected boolean hasAtmosphere;
+    protected PlanetData planetData;
 
     public CelestialBody() {}
 
@@ -62,6 +64,21 @@ public abstract class CelestialBody extends GameObject implements IClickable {
 
     public void setHasAtmosphere(boolean hasAtmosphere) {
         this.hasAtmosphere = hasAtmosphere;
+    }
+
+    public void setPlanetData(PlanetData planetData) {
+        this.planetData = planetData;
+    }
+
+    public PlanetData getPlanetData() {
+        return planetData;
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        CelestialBody newBody = (CelestialBody) super.clone();
+        newBody.setPosition((Coord) newBody.getPosition().clone());
+        return super.clone();
     }
 
     @Override

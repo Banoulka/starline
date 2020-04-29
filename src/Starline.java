@@ -1,5 +1,9 @@
 import Base.SceneManager;
+import Base.Scenes.PlayScene;
+import Base.Scenes.StartScene;
+import Base.Scenes.ViewScene;
 import Base.Scenes.VisitScene;
+import Base.Scenes.StartScene;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -22,6 +26,6 @@ public class Starline extends Application {
         // Controllers handle the view / model situation
 
         // Hierarchy = SceneManager > Scenes > Controller(s) > View(s) / Model(s)
-        SceneManager.setCurrScene(new VisitScene(null));
+        SceneManager.setCurrScene(StartScene.get());
     }
 }

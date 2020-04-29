@@ -1,6 +1,7 @@
 package Base.Builders;
 
 import Abstracts.CelestialBody;
+import Abstracts.PlanetData;
 
 public abstract class CelestialBodyBuilder
         <O extends CelestialBody, SELF extends CelestialBodyBuilder<O, SELF>>
@@ -21,6 +22,11 @@ public abstract class CelestialBodyBuilder
 
     public SELF hasAtmosphere(boolean hasAtmosphere) {
         getObj().setHasAtmosphere(hasAtmosphere);
+        return self();
+    }
+
+    public SELF planetData(PlanetData planetData) {
+        getObj().setPlanetData(planetData);
         return self();
     }
 }

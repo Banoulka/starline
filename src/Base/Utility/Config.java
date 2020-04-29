@@ -1,4 +1,4 @@
-package Base;
+package Base.Utility;
 
 public class Config {
 
@@ -8,7 +8,7 @@ public class Config {
 
     // Memory leaks somewhere slowing the game down
     // Dragging canvas layer is bad news apparently
-    public static final boolean DEBUG = true;
+    public static final boolean DEBUG = false;
 
     public static final boolean IS_RESIZABLE = false;
 

@@ -1,12 +1,12 @@
 package Base;
 
+import Base.Utility.Utils;
 import javafx.animation.*;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
 import java.io.File;
 import java.io.FilenameFilter;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -186,7 +186,6 @@ abstract class Star {
 
 
         // Get random anim values
-        // TODO: Randomise Scale on start
         int rotateChange = r.nextDouble() > 0.5 ? +360 : -360; // Rotate Left or Right
         double speed = 15000 + (80000 - 15000) * r.nextDouble(); // Seconds between 15 - 80
         double opacityChange = r.nextFloat(); // Opacity between 0 - 1

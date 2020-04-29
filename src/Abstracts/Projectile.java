@@ -1,7 +1,7 @@
 package Abstracts;
 
 
-import Base.Coord;
+import Base.Utility.Coord;
 
 public abstract class Projectile extends GameObject {
 
@@ -35,6 +35,10 @@ public abstract class Projectile extends GameObject {
 
     public void setMoveY(double moveY) {
         this.moveY = moveY;
+    }
+
+    public void setSpeed(float speed) {
+        this.speed = speed;
     }
 
     @Override

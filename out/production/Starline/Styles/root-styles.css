@@ -25,3 +25,7 @@
     -fx-border-color: red;
     -fx-border-width: 2;
 }
+
+.label {
+    -fx-text-fill: white;
+}

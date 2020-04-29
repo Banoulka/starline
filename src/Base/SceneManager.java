@@ -2,8 +2,7 @@ package Base;
 
 import Abstracts.ExtendableScene;
 import Base.Interfaces.IRunAfter;
-import Base.Scenes.LoadScene;
-import Base.Scenes.PlayScene;
+import Base.Utility.Config;
 import javafx.application.Platform;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
